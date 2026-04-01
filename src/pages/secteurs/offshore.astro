@@ -1,0 +1,124 @@
+---
+import SectorLayout from '../../layouts/SectorLayout.astro';
+---
+
+<SectorLayout
+  title="Offshore — Ingénierie de structures marines | Ortenix"
+  description="Bureau d'études offshore spécialisé en calcul de structures, analyse de fatigue et tuyauteries sous pression. Conformité DNV, API, ISO 19900."
+  lang="fr"
+  sectorName="Offshore"
+  sectorBaseline="Structures marines & sous-marines · Environnements sévères"
+  sectorColor="#00C2FF"
+  sectorIcon="⚓"
+>
+
+  <!-- Enjeux -->
+  <section class="section-padding bg-[var(--color-bg-primary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-12 fade-up">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+          <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">Enjeux</span>
+        </div>
+        <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+          Des environnements<br/><span class="text-gradient-cyan">sans tolérance à l'erreur</span>
+        </h2>
+      </div>
+
+      <div class="stagger-container grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { icon: '🌊', title: 'Charges dynamiques', desc: 'Houles, courants, vagues de tempête : vos structures doivent résister à des sollicitations cycliques extrêmes sur toute leur durée de vie.' },
+          { icon: '🔩', title: 'Fatigue & corrosion', desc: 'L\'analyse de fatigue selon les courbes S-N DNV est indispensable pour garantir l\'intégrité des assemblages soudés en milieu corrosif.' },
+          { icon: '📋', title: 'Certification obligatoire', desc: 'Bureau Veritas, DNV, Lloyd\'s : chaque projet offshore doit satisfaire les exigences des sociétés de classification compétentes.' },
+        ].map(e => (
+          <div class="stagger-item bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-6">
+            <span class="text-3xl block mb-4">{e.icon}</span>
+            <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-2">{e.title}</h3>
+            <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">{e.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertises -->
+  <section class="section-padding bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-12 fade-up">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+          <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">Nos expertises offshore</span>
+        </div>
+        <h2 class="font-display font-bold text-[var(--color-text-primary)]">Ce que nous <span class="text-gradient-cyan">maîtrisons</span></h2>
+      </div>
+
+      <div class="stagger-container grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          { title: 'Analyse de structures offshore', desc: 'Calcul statique et dynamique de jacket, monopile, FPSO, topside. Modèles globaux et locaux.' },
+          { title: 'Analyse de fatigue', desc: 'Courbes S-N, cumul de dommages de Miner, hot-spot stress selon DNV-RP-C203.' },
+          { title: 'Tuyauteries sous pression', desc: 'Flexibilité, contraintes thermiques et de pression, qualification selon ASME B31.3 et ISO 15649.' },
+          { title: 'Résistance au blast & accident', desc: 'Analyse accidentelle, dimensionnement aux explosions, mécanique de la rupture.' },
+        ].map(e => (
+          <div class="stagger-item flex gap-4 bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-6 hover:border-[var(--color-accent-cyan)] transition-colors">
+            <div class="w-2 h-2 rounded-full bg-[var(--color-accent-cyan)] flex-shrink-0 mt-2"></div>
+            <div>
+              <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-1">{e.title}</h3>
+              <p class="text-sm text-[var(--color-text-secondary)]">{e.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Normes & Logiciels -->
+  <section class="section-padding bg-[var(--color-bg-primary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 fade-up">
+        <div>
+          <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-4">Normes & référentiels</h3>
+          <div class="flex flex-wrap gap-2">
+            {['DNV-ST-0126', 'DNV-ST-0119', 'DNV-RP-C203', 'API RP 2A', 'ISO 19900', 'ISO 19902', 'ASME VIII', 'Bureau Veritas NR445'].map(n => (
+              <span class="font-mono text-xs px-3 py-1.5 rounded bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] text-[var(--color-accent-cyan)]">{n}</span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-4">Logiciels utilisés</h3>
+          <div class="flex flex-wrap gap-2">
+            {['ANSYS Mechanical', 'ABAQUS', 'SACS', 'MOSES', 'CAESAR II', 'AutoPIPE', 'CATIA V5'].map(s => (
+              <span class="font-mono text-xs px-3 py-1.5 rounded bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] text-[var(--color-text-muted)]">{s}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cas client -->
+  <section class="section-padding bg-[var(--color-bg-secondary)]">
+    <div class="max-w-4xl mx-auto px-6 fade-up">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+        <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">Cas client anonymisé</span>
+      </div>
+
+      <div class="bg-[var(--color-bg-card)] border border-[rgba(0,194,255,0.2)] rounded-2xl p-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-4 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-bg-border)]">
+            <p class="font-mono text-xs text-[var(--color-text-muted)] mb-2 uppercase">Problème</p>
+            <p class="text-sm text-[var(--color-text-secondary)]">Fatigue critique détectée sur un nœud tubulaire d'une plateforme en Mer du Nord après inspection sous-marine.</p>
+          </div>
+          <div class="p-4 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-bg-border)]">
+            <p class="font-mono text-xs text-[var(--color-text-muted)] mb-2 uppercase">Approche</p>
+            <p class="text-sm text-[var(--color-text-secondary)]">Analyse de fatigue hot-spot selon DNV-RP-C203, modèle EF local raffiné, histogramme de chargement sur 20 ans.</p>
+          </div>
+          <div class="p-4 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-bg-border)]">
+            <p class="font-mono text-xs text-[var(--color-accent-cyan)] mb-2 uppercase">Résultat</p>
+            <p class="text-sm text-[var(--color-text-secondary)]">Durée de vie résiduelle de 8 ans confirmée. Plan d'inspection adapté validé par la société de classification.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</SectorLayout>

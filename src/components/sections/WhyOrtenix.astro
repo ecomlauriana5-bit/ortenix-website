@@ -1,0 +1,102 @@
+---
+interface Props {
+  lang?: string;
+}
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+
+const columns = [
+  {
+    icon: '⚙️',
+    title: isFr ? 'Dans votre environnement' : 'In your environment',
+    body: isFr
+      ? 'Nous travaillons avec vos logiciels. NASTRAN/FEMAP, SACS, ANSYS, Stead Pro, Abaqus — nos ingénieurs s\'intègrent dans votre workflow sans friction.'
+      : 'We work with your software. NASTRAN/FEMAP, SACS, ANSYS, Stead Pro, Abaqus — our engineers integrate into your workflow without friction.',
+    tools: ['NASTRAN/FEMAP', 'SACS', 'ANSYS', 'Abaqus', 'Stead Pro'],
+    color: '#00D4FF',
+  },
+  {
+    icon: '📋',
+    title: isFr ? 'Vos codes, nos livrables' : 'Your codes, our deliverables',
+    body: isFr
+      ? 'RCC-M pour le nucléaire. API 579 pour l\'intégrité des équipements. DNV-GL pour l\'offshore. Chaque note de calcul suit le code normatif de votre secteur.'
+      : 'RCC-M for nuclear. API 579 for equipment integrity. DNV-GL for offshore. Every calculation note follows your sector\'s normative code.',
+    tools: ['RCC-M', 'API 579', 'DNV-GL', 'CODAP', 'ASME III'],
+    color: '#C9A84C',
+  },
+  {
+    icon: '🤖',
+    title: isFr ? "L'IA qui accélère" : 'AI that accelerates',
+    body: isFr
+      ? 'Post-processing automatisé, optimisation paramétrique, détection d\'anomalies. L\'ingénieur décide. L\'IA accélère.'
+      : 'Automated post-processing, parametric optimization, anomaly detection. The engineer decides. AI accelerates.',
+    tools: ['Python', 'Abaqus Scripting', 'ANSYS APDL', 'PyMAPDL'],
+    color: '#A855F7',
+  },
+];
+---
+
+<section class="section-padding bg-[var(--color-bg-secondary)]" id="pourquoi">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="mb-14 fade-up">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-px w-16 bg-[var(--color-accent-cyan)]"></span>
+        <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">
+          {isFr ? 'Pourquoi Ortenix ?' : 'Why Ortenix?'}
+        </span>
+      </div>
+      <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+        {isFr ? 'Une intégration' : 'Seamless'}<br/>
+        <span class="text-gradient-cyan">{isFr ? 'sans friction' : 'integration'}</span>
+      </h2>
+    </div>
+
+    <!-- 3 colonnes -->
+    <div class="stagger-container grid grid-cols-1 md:grid-cols-3 gap-6">
+      {columns.map(col => (
+        <div
+          class="stagger-item group relative bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-8 flex flex-col gap-5 hover:-translate-y-1 transition-all duration-300"
+          style={`--col-color: ${col.color};`}
+        >
+          <!-- Top accent -->
+          <div
+            class="absolute top-0 left-0 right-0 h-[2px] rounded-t-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={`background: ${col.color};`}
+          ></div>
+
+          <!-- Icon -->
+          <div
+            class="w-12 h-12 flex items-center justify-center rounded-lg text-2xl border"
+            style={`background: color-mix(in srgb, ${col.color} 10%, transparent); border-color: color-mix(in srgb, ${col.color} 25%, transparent);`}
+          >
+            {col.icon}
+          </div>
+
+          <!-- Title -->
+          <h3 class="font-display font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--col-color)] transition-colors">
+            {col.title}
+          </h3>
+
+          <!-- Body -->
+          <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed flex-1">
+            {col.body}
+          </p>
+
+          <!-- Tools -->
+          <div class="flex flex-wrap gap-1.5 pt-2 border-t border-[var(--color-bg-border)]">
+            {col.tools.map(t => (
+              <span
+                class="font-mono text-[11px] px-2 py-0.5 rounded"
+                style={`color: ${col.color}; background: color-mix(in srgb, ${col.color} 8%, transparent); border: 1px solid color-mix(in srgb, ${col.color} 20%, transparent);`}
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

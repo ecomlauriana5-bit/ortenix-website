@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Team from '../../components/sections/Team.astro';
+import Contact from '../../components/sections/Contact.astro';
+---
+
+<BaseLayout
+  title="L'équipe — Ingénieurs experts | Ortenix"
+  description="L'équipe Ortenix : des ingénieurs expérimentés en FEA, CFD, nucléaire, naval et IA industrielle. Expertise sectorielle, rigueur et confidentialité."
+  lang="fr"
+>
+  <!-- Hero -->
+  <section class="relative py-24 bg-[var(--color-bg-primary)] overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 40% 50% at 60% 30%, rgba(0,194,255,0.05) 0%, transparent 70%);"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+        <a href="/" class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest hover:underline">← Accueil</a>
+      </div>
+      <h1 class="font-display font-extrabold text-[var(--color-text-primary)] mb-4" style="font-size: clamp(2.5rem, 5vw, 5rem);">
+        Des ingénieurs<br/><span class="text-gradient-cyan">de terrain</span>
+      </h1>
+      <p class="text-[var(--color-text-secondary)] max-w-xl text-lg leading-relaxed">
+        Chaque membre de l'équipe Ortenix cumule des années d'expérience sur des projets critiques. Pas de juniors en façade : vous parlez directement à l'expert.
+      </p>
+    </div>
+  </section>
+
+  <!-- Valeurs -->
+  <section class="section-padding bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-12 fade-up">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+          <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">Ce qui nous définit</span>
+        </div>
+        <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+          Notre ADN<br/><span class="text-gradient-cyan">d'ingénieurs</span>
+        </h2>
+      </div>
+
+      <div class="stagger-container grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          {
+            icon: '🎯',
+            title: 'Expertise ciblée',
+            desc: 'Nous n\'acceptons que les missions où notre niveau d\'expertise est un avantage réel pour vous. Pas de généralisme de façade.',
+          },
+          {
+            icon: '🔒',
+            title: 'Confidentialité absolue',
+            desc: 'NDA systématique sur demande. Vos données, vos méthodes et vos résultats restent chez vous. Toujours.',
+          },
+          {
+            icon: '📐',
+            title: 'Rigueur documentaire',
+            desc: 'Notes de calcul référencées, hypothèses tracées, résultats justifiés. Nos livrables sont révisables et auditables.',
+          },
+        ].map(v => (
+          <div class="stagger-item bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-8 hover:border-[var(--color-accent-cyan)] transition-colors">
+            <span class="text-3xl block mb-4">{v.icon}</span>
+            <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-2">{v.title}</h3>
+            <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Team lang="fr" />
+  <Contact lang="fr" />
+</BaseLayout>

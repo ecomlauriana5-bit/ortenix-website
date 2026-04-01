@@ -1,0 +1,51 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Contact from '../components/sections/Contact.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  sectorName: string;
+  sectorBaseline: string;
+  sectorColor: string;
+  sectorIcon: string;
+}
+
+const { title, description, lang = 'fr', sectorName, sectorBaseline, sectorColor, sectorIcon } = Astro.props;
+const isFr = lang === 'fr';
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <!-- Sector Hero -->
+  <section class="relative py-24 overflow-hidden" style={`background: linear-gradient(135deg, var(--color-bg-primary) 0%, color-mix(in srgb, ${sectorColor} 5%, var(--color-bg-primary)) 100%);`}>
+    <div class="absolute inset-0 pointer-events-none" style={`background: radial-gradient(ellipse 50% 60% at 20% 50%, color-mix(in srgb, ${sectorColor} 8%, transparent) 0%, transparent 70%);`}></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="h-px w-12" style={`background: ${sectorColor};`}></span>
+        <a href="/#secteurs" class="font-mono text-xs uppercase tracking-widest hover:underline" style={`color: ${sectorColor};`}>
+          {isFr ? '← Secteurs' : '← Sectors'}
+        </a>
+      </div>
+
+      <div class="flex items-center gap-4 mb-4">
+        <span class="text-4xl">{sectorIcon}</span>
+        <div>
+          <h1 class="font-display font-extrabold text-[var(--color-text-primary)]" style={`font-size: clamp(2.5rem, 5vw, 5rem);`}>
+            {sectorName}
+          </h1>
+          <p class="font-mono text-sm mt-1" style={`color: ${sectorColor};`}>
+            {sectorBaseline}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sector content -->
+  <slot />
+
+  <!-- Contact -->
+  <Contact lang={lang} />
+</BaseLayout>

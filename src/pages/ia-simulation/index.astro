@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Contact from '../../components/sections/Contact.astro';
+---
+
+<BaseLayout
+  title="IA appliquée au calcul de structures — Ortenix, Nantes"
+  description="L'IA chez Ortenix : post-processing automatisé, optimisation paramétrique, jumeaux numériques. Des outils concrets utilisés par nos ingénieurs sur des projets offshore, naval et nucléaire."
+  lang="fr"
+>
+
+  <!-- Hero -->
+  <section class="relative py-28 bg-[var(--color-bg-primary)] overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 60% at 80% 30%, rgba(168,85,247,0.06) 0%, transparent 70%);"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+        <a href="/" class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest hover:underline">← Accueil</a>
+      </div>
+      <h1 class="font-display font-extrabold text-[var(--color-text-primary)] mb-5" style="font-size: clamp(2.5rem, 5vw, 5rem); max-width: 800px;">
+        L'IA qui sert le calcul,<br/><span class="text-gradient-cyan">pas l'inverse.</span>
+      </h1>
+      <p class="text-[var(--color-text-secondary)] max-w-2xl text-lg leading-relaxed">
+        Chez Ortenix, l'intelligence artificielle n'est pas un argument marketing. C'est un ensemble d'outils que nos ingénieurs utilisent concrètement pour réduire les délais, explorer plus de solutions, et détecter les problèmes avant qu'ils ne coûtent cher.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3 niveaux détaillés -->
+  <section class="section-padding bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-6 space-y-16">
+
+      <!-- Niveau 1 -->
+      <article class="fade-up grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <span class="font-mono text-xs px-3 py-1 rounded-full border text-[var(--color-accent-cyan)]" style="border-color: rgba(0,212,255,0.3); background: rgba(0,212,255,0.06);">Niveau 1 — IA Intégrée</span>
+          </div>
+          <h2 class="font-display font-bold text-[var(--color-text-primary)] mb-4" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">
+            Post-processing<br/><span class="text-gradient-cyan">automatisé</span>
+          </h2>
+          <p class="text-[var(--color-text-secondary)] leading-relaxed mb-6">
+            Scripts Python sur sorties Abaqus/ANSYS : extraction automatique des contraintes critiques, identification des zones à risque, génération du rapport PDF structuré avec tableaux et cartographies.
+          </p>
+          <p class="text-[var(--color-text-secondary)] leading-relaxed">
+            Sur une étude de fatigue complexe avec 50+ cas de charge, le post-processing manuel prenait 3 jours. Automatisé, il prend 2 heures — et l'ingénieur se concentre sur l'analyse, pas sur l'extraction de données.
+          </p>
+        </div>
+        <div class="bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-8" style="border-left: 3px solid #00D4FF;">
+          <div class="mb-6">
+            <span class="font-mono text-4xl font-bold text-[var(--color-accent-cyan)]">−65%</span>
+            <p class="text-[var(--color-text-secondary)] text-sm mt-1">de temps de post-traitement sur études complexes</p>
+          </div>
+          <div class="border-t border-[var(--color-bg-border)] pt-5">
+            <p class="font-mono text-xs text-[var(--color-text-muted)] uppercase tracking-wide mb-3">Outils utilisés</p>
+            <div class="flex flex-wrap gap-2">
+              {['Python', 'Abaqus Scripting API', 'ANSYS APDL', 'PyMAPDL', 'Matplotlib', 'ReportLab'].map(t => (
+                <span class="font-mono text-xs px-2 py-1 rounded bg-[var(--color-bg-secondary)] border border-[var(--color-bg-border)] text-[var(--color-text-muted)]">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Divider -->
+      <div class="border-t border-[var(--color-bg-border)]"></div>
+
+      <!-- Niveau 2 -->
+      <article class="fade-up grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1 bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-8" style="border-left: 3px solid #A855F7;">
+          <div class="mb-6">
+            <span class="font-mono text-4xl font-bold" style="color: #A855F7;">200</span>
+            <p class="text-[var(--color-text-secondary)] text-sm mt-1">configurations évaluées là où 10 seraient faites manuellement</p>
+          </div>
+          <div class="border-t border-[var(--color-bg-border)] pt-5">
+            <p class="font-mono text-xs text-[var(--color-text-muted)] uppercase tracking-wide mb-3">Outils utilisés</p>
+            <div class="flex flex-wrap gap-2">
+              {['Python', 'Scikit-learn', 'NSGA-II', 'Abaqus Scripting', 'ANSYS Parametric Design Language'].map(t => (
+                <span class="font-mono text-xs px-2 py-1 rounded bg-[var(--color-bg-secondary)] border border-[var(--color-bg-border)] text-[var(--color-text-muted)]">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="font-mono text-xs px-3 py-1 rounded-full border" style="color: #A855F7; border-color: rgba(168,85,247,0.3); background: rgba(168,85,247,0.06);">Niveau 2 — IA Conseil</span>
+          </div>
+          <h2 class="font-display font-bold text-[var(--color-text-primary)] mb-4" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">
+            Optimisation<br/><span style="background: linear-gradient(135deg, #A855F7, #7C3AED); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">paramétrique</span>
+          </h2>
+          <p class="text-[var(--color-text-secondary)] leading-relaxed mb-6">
+            Exploration automatisée de l'espace de conception via algorithmes évolutionnaires (NSGA-II). Plusieurs objectifs simultanés : minimiser la masse, maximiser le facteur de sécurité, respecter les contraintes géométriques.
+          </p>
+          <p class="text-[var(--color-text-secondary)] leading-relaxed">
+            Application typique : optimisation des épaisseurs de renforts sur un nœud tubulaire offshore pour satisfaire simultanément la fatigue DNV-GL et la contrainte en statique API.
+          </p>
+        </div>
+      </article>
+
+      <!-- Divider -->
+      <div class="border-t border-[var(--color-bg-border)]"></div>
+
+      <!-- Niveau 3 -->
+      <article class="fade-up grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <span class="font-mono text-xs px-3 py-1 rounded-full border text-[#2ECC71]" style="border-color: rgba(46,204,113,0.3); background: rgba(46,204,113,0.06);">Niveau 3 — Jumeau Numérique</span>
+          </div>
+          <h2 class="font-display font-bold text-[var(--color-text-primary)] mb-4" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">
+            Détection précoce<br/><span style="background: linear-gradient(135deg, #2ECC71, #27AE60); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">d'anomalies</span>
+          </h2>
+          <p class="text-[var(--color-text-secondary)] leading-relaxed mb-6">
+            Modèle EF calibré sur données capteurs réelles. L'écart entre comportement prédit et comportement mesuré est analysé en continu. Une dérive significative déclenche une alerte avant que la défaillance ne soit visible à l'œil ou à l'inspection.
+          </p>
+          <p class="text-[var(--color-text-secondary)] leading-relaxed">
+            Applicable aux structures offshore sous surveillance DNV-GL continue : jackets, risers, pipelines. Le jumeau numérique adapte sa prédiction au vieillissement réel de la structure.
+          </p>
+        </div>
+        <div class="bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-8" style="border-left: 3px solid #2ECC71;">
+          <div class="mb-6">
+            <span class="font-mono text-4xl font-bold text-[#2ECC71]">3–6 mois</span>
+            <p class="text-[var(--color-text-secondary)] text-sm mt-1">d'avance sur la détection avant défaillance visible</p>
+          </div>
+          <div class="border-t border-[var(--color-bg-border)] pt-5">
+            <p class="font-mono text-xs text-[var(--color-text-muted)] uppercase tracking-wide mb-3">Outils utilisés</p>
+            <div class="flex flex-wrap gap-2">
+              {['Python', 'TensorFlow', 'Scikit-learn', 'ANSYS Twin Builder', 'Apache Kafka', 'Abaqus Scripting'].map(t => (
+                <span class="font-mono text-xs px-2 py-1 rounded bg-[var(--color-bg-secondary)] border border-[var(--color-bg-border)] text-[var(--color-text-muted)]">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Section honnêteté -->
+  <section class="section-padding bg-[var(--color-bg-primary)]">
+    <div class="max-w-3xl mx-auto px-6 text-center fade-up">
+      <div class="w-12 h-12 rounded-full border border-[var(--color-accent-gold)] flex items-center justify-center text-2xl mx-auto mb-6" style="background: rgba(201,168,76,0.08);">
+        ⚖️
+      </div>
+      <h2 class="font-display font-bold text-[var(--color-text-primary)] mb-6" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">
+        Ce que l'IA<br/><span class="text-gradient-gold">ne remplace pas</span>
+      </h2>
+      <div class="bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-8" style="border-top: 3px solid var(--color-accent-gold);">
+        <p class="text-[var(--color-text-secondary)] leading-relaxed text-base">
+          L'IA accélère. L'ingénieur décide. Chaque note de calcul Ortenix est signée par un ingénieur responsable. La méthodologie reste tracée. Les hypothèses restent documentées. La responsabilité technique reste humaine — c'est non négociable dans les secteurs où nous intervenons.
+        </p>
+        <p class="mt-4 text-[var(--color-text-muted)] text-sm font-mono">
+          Offshore · Naval · Énergie · Nucléaire · Pétrochimie
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack complet -->
+  <section class="py-16 bg-[var(--color-bg-secondary)] border-t border-[var(--color-bg-border)]">
+    <div class="max-w-7xl mx-auto px-6 fade-up">
+      <p class="font-mono text-xs text-[var(--color-text-muted)] uppercase tracking-widest text-center mb-8">Stack technique IA complet</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        {[
+          'Python', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'MATLAB',
+          'Abaqus Scripting API', 'ANSYS APDL', 'PyMAPDL',
+          'Post-processing automatisé', 'Optimisation multi-objectifs',
+          'Apache Kafka', 'NSGA-II', 'ReportLab', 'Matplotlib'
+        ].map(t => (
+          <span class="font-mono text-sm px-4 py-2 rounded-lg bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-accent-cyan)] hover:text-[var(--color-accent-cyan)] transition-colors">
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Contact lang="fr" />
+</BaseLayout>

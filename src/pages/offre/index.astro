@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Offer from '../../components/sections/Offer.astro';
+import Contact from '../../components/sections/Contact.astro';
+---
+
+<BaseLayout
+  title="Notre offre — Forfait & Assistance Technique | Ortenix"
+  description="Deux modes d'intervention : étude au forfait (périmètre fixe, livrable défini) ou assistance technique (ingénieur senior dédié à vos équipes). Devis sous 48h."
+  lang="fr"
+>
+  <!-- Hero -->
+  <section class="relative py-24 bg-[var(--color-bg-primary)] overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 40% 60% at 70% 40%, rgba(0,194,255,0.05) 0%, transparent 70%);"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+        <a href="/" class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest hover:underline">← Accueil</a>
+      </div>
+      <h1 class="font-display font-extrabold text-[var(--color-text-primary)] mb-4" style="font-size: clamp(2.5rem, 5vw, 5rem);">
+        Notre <span class="text-gradient-cyan">offre</span>
+      </h1>
+      <p class="text-[var(--color-text-secondary)] max-w-xl text-lg leading-relaxed">
+        Deux modes d'intervention adaptés à vos besoins, avec la même exigence technique et la même confidentialité garantie.
+      </p>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section-padding bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-12 fade-up">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+          <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">Notre process</span>
+        </div>
+        <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+          Du brief au livrable,<br/><span class="text-gradient-cyan">en toute transparence</span>
+        </h2>
+      </div>
+
+      <div class="stagger-container grid grid-cols-1 md:grid-cols-4 gap-6">
+        {[
+          { step: '01', title: 'Brief technique', desc: 'Vous nous décrivez votre besoin. Nous posons les bonnes questions pour cerner le périmètre exact.' },
+          { step: '02', title: 'Devis sous 48h', desc: 'Retour structuré avec approche technique proposée, délai et budget. NDA disponible dès cette étape.' },
+          { step: '03', title: 'Exécution', desc: 'Notre équipe travaille avec rigueur et vous informe régulièrement de l\'avancement.' },
+          { step: '04', title: 'Livrable & revue', desc: 'Rapport final complet, revue technique si besoin. Vous gardez la main sur vos données.' },
+        ].map(p => (
+          <div class="stagger-item relative">
+            <div class="font-mono text-5xl font-bold text-[var(--color-bg-border)] mb-4 select-none">{p.step}</div>
+            <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-2">{p.title}</h3>
+            <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">{p.desc}</p>
+            {p.step !== '04' && (
+              <div class="hidden md:block absolute top-6 right-0 w-6 h-px bg-[var(--color-bg-border)] translate-x-3"></div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Offer lang="fr" />
+  <Contact lang="fr" />
+</BaseLayout>

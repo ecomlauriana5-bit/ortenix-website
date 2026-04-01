@@ -1,0 +1,129 @@
+---
+interface Props {
+  lang?: string;
+}
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+
+// Placeholder client logos (text-based since no images yet)
+const clients = [
+  { name: 'TotalEnergies', sector: 'offshore' },
+  { name: 'Naval Group', sector: 'naval' },
+  { name: 'EDF', sector: 'nucleaire' },
+  { name: 'Technip', sector: 'offshore' },
+  { name: 'Engie', sector: 'energie' },
+  { name: 'Framatome', sector: 'nucleaire' },
+  { name: 'Bureau Veritas', sector: 'offshore' },
+  { name: 'Bourbon', sector: 'naval' },
+];
+
+const testimonials = [
+  {
+    quote: isFr
+      ? 'Ortenix nous a livré une étude de fatigue d\'une rigueur exceptionnelle, dans les délais les plus contraints. Leur maîtrise des normes DNV est impressionnante.'
+      : 'Ortenix delivered a fatigue study of exceptional rigor, within the most constrained timelines. Their mastery of DNV standards is impressive.',
+    author: 'Directeur technique',
+    company: isFr ? 'Opérateur pétrolier offshore' : 'Offshore oil operator',
+    sector: 'offshore',
+    color: '#00C2FF',
+  },
+  {
+    quote: isFr
+      ? 'Une équipe qui comprend nos contraintes réglementaires nucléaires dès le premier briefing. Résultats conformes RCC-M, zéro itération superflue.'
+      : 'A team that understands our nuclear regulatory constraints from the first briefing. RCC-M compliant results, zero superfluous iterations.',
+    author: 'Chef de projet',
+    company: isFr ? 'Exploitant nucléaire' : 'Nuclear operator',
+    sector: 'nucleaire',
+    color: '#2ECC71',
+  },
+  {
+    quote: isFr
+      ? 'L\'assistance technique d\'Ortenix a été déterminante sur notre projet de construction navale. Un ingénieur pleinement intégré à notre bureau d\'études.'
+      : 'Ortenix\'s technical assistance was decisive on our shipbuilding project. An engineer fully integrated into our design office.',
+    author: 'Responsable ingénierie',
+    company: isFr ? 'Chantier naval français' : 'French shipyard',
+    sector: 'naval',
+    color: '#4A90D9',
+  },
+];
+---
+
+<section class="section-padding bg-[var(--color-bg-primary)]" id="references">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="mb-16 fade-up">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-px w-16 bg-[var(--color-accent-cyan)]"></span>
+        <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">
+          {isFr ? 'Références' : 'References'}
+        </span>
+      </div>
+      <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+        {isFr ? 'Ils nous font' : 'They trust'}<br/>
+        <span class="text-gradient-cyan">{isFr ? 'confiance' : 'us'}</span>
+      </h2>
+      <p class="mt-4 text-[var(--color-text-secondary)] max-w-xl">
+        {isFr
+          ? 'Acteurs majeurs des énergies, de l\'industrie navale et du nucléaire, nous partageons leur exigence au quotidien.'
+          : 'Major players in energy, naval industry and nuclear, we share their daily standards of excellence.'}
+      </p>
+    </div>
+
+    <!-- Clients marquee -->
+    <div class="relative overflow-hidden mb-16 fade-up">
+      <!-- Gradient masks -->
+      <div class="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style="background: linear-gradient(to right, var(--color-bg-primary), transparent);"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style="background: linear-gradient(to left, var(--color-bg-primary), transparent);"></div>
+
+      <div class="flex">
+        <div class="marquee-track flex items-center gap-12 py-6">
+          {[...clients, ...clients].map(client => (
+            <div class="flex-shrink-0 px-6 py-3 bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-lg">
+              <span class="font-display font-semibold text-[var(--color-text-secondary)] whitespace-nowrap text-sm">
+                {client.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="stagger-container grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map(t => (
+        <div
+          class="stagger-item relative bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-6 hover:border-current transition-all duration-300"
+          style={`--t-color: ${t.color};`}
+        >
+          <!-- Quote mark -->
+          <div class="text-4xl font-display leading-none mb-4 opacity-40" style={`color: ${t.color};`}>"</div>
+
+          <blockquote class="text-[var(--color-text-secondary)] text-sm leading-relaxed mb-6 italic">
+            {t.quote}
+          </blockquote>
+
+          <div class="flex items-center gap-3 pt-4 border-t border-[var(--color-bg-border)]">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" style={`background: color-mix(in srgb, ${t.color} 15%, transparent); color: ${t.color};`}>
+              {t.author.charAt(0)}
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-[var(--color-text-primary)]">{t.author}</p>
+              <p class="text-xs text-[var(--color-text-muted)] font-mono">{t.company}</p>
+            </div>
+          </div>
+
+          <!-- Sector dot -->
+          <div class="absolute top-4 right-4 w-2 h-2 rounded-full" style={`background: ${t.color};`}></div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Confidentiality note -->
+    <p class="mt-8 text-center text-xs font-mono text-[var(--color-text-muted)] fade-up">
+      🔒 {isFr
+        ? 'Les noms de clients sont anonymisés sur demande. Références détaillées disponibles sous NDA.'
+        : 'Client names are anonymized on request. Detailed references available under NDA.'}
+    </p>
+  </div>
+</section>

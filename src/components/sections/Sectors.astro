@@ -1,0 +1,89 @@
+---
+import SectorCard from '../ui/SectorCard.astro';
+
+interface Props {
+  lang?: string;
+}
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+
+const sectors = [
+  {
+    name: isFr ? 'Offshore & GNL' : 'Offshore & LNG',
+    color: '#00D4FF',
+    icon: '⚓',
+    baseline: isFr ? 'Structures marines & sous-marines' : 'Marine & subsea structures',
+    description: isFr
+      ? 'Vos structures travaillent en environnement corrosif sous charge cyclique. Une erreur de calcul fatigue coûte une plateforme.'
+      : 'Your structures operate in corrosive environments under cyclic loading. A fatigue calculation error costs a platform.',
+    norms: ['DNV-GL', 'API RP 2A', 'ISO 19901', 'API 579'],
+    href: '/secteurs/offshore',
+  },
+  {
+    name: isFr ? 'Naval & Défense' : 'Naval & Defence',
+    color: '#4A90D9',
+    icon: '🚢',
+    baseline: isFr ? 'Architecture navale & résistance' : 'Naval architecture & strength',
+    description: isFr
+      ? 'Vos navires doivent passer la certification bureau. Les délais de chantier ne pardonnent pas les itérations.'
+      : 'Your vessels must pass classification society certification. Shipyard schedules leave no room for rework.',
+    norms: ['Bureau Veritas', "Lloyd's Register", 'Def Stan'],
+    href: '/secteurs/naval',
+  },
+  {
+    name: isFr ? 'Énergie & Nucléaire' : 'Energy & Nuclear',
+    color: '#2ECC71',
+    icon: '⚛️',
+    baseline: isFr ? 'Qualité · Sûreté · Conformité ESPN' : 'Quality · Safety · ESPN compliance',
+    description: isFr
+      ? 'Vos équipements sous pression fonctionnent 40 ans. La conformité RCC-M n\'est pas une option.'
+      : 'Your pressure equipment operates for 40 years. RCC-M compliance is not optional.',
+    norms: ['RCC-M', 'ASME III', 'ESPN', 'RSE-M'],
+    href: '/secteurs/energie',
+  },
+  {
+    name: isFr ? 'Pétrochimie & Industrie' : 'Petrochemical & Industry',
+    color: '#E8734A',
+    icon: '🏭',
+    baseline: isFr ? 'Tuyauteries haute pression & équipements' : 'High-pressure piping & equipment',
+    description: isFr
+      ? 'Vos tuyauteries haute pression subissent des températures extrêmes. La flexibilité et la tenue sismique se calculent avant de se construire.'
+      : 'Your high-pressure piping operates at extreme temperatures. Flexibility and seismic resistance must be calculated before construction.',
+    norms: ['CODAP', 'CODETI', 'EN 13480', 'API 579'],
+    href: '/secteurs/nucleaire',
+  },
+];
+---
+
+<section class="section-padding bg-[var(--color-bg-primary)]" id="secteurs">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="mb-16 fade-up">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-px w-16 bg-[var(--color-accent-cyan)]"></span>
+        <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">
+          {isFr ? 'Nos secteurs' : 'Our sectors'}
+        </span>
+      </div>
+      <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+        {isFr ? 'Là où la marge' : 'Where the margin'}<br/>
+        <span class="text-gradient-cyan">{isFr ? "d'erreur est nulle" : 'of error is zero'}</span>
+      </h2>
+      <p class="mt-4 text-[var(--color-text-secondary)] max-w-xl">
+        {isFr
+          ? 'Ortenix intervient dans les secteurs critiques où chaque calcul engage la sécurité, la conformité réglementaire et la durabilité des installations.'
+          : 'Ortenix operates in critical sectors where every calculation involves safety, regulatory compliance and installation longevity.'}
+      </p>
+    </div>
+
+    <!-- Grid 2×2 -->
+    <div class="stagger-container grid grid-cols-1 md:grid-cols-2 gap-6">
+      {sectors.map(sector => (
+        <div class="stagger-item">
+          <SectorCard {...sector} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

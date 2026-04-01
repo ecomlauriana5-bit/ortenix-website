@@ -1,0 +1,141 @@
+---
+import TerminalAnimation from '../ui/TerminalAnimation.astro';
+
+interface Props {
+  lang?: string;
+}
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+
+const levels = [
+  {
+    level: isFr ? 'Niveau 1 — IA Intégrée' : 'Level 1 — Integrated AI',
+    title: isFr ? 'Post-processing automatisé' : 'Automated post-processing',
+    description: isFr
+      ? 'Scripts Python sur sorties Abaqus/ANSYS : extraction automatique des contraintes critiques, génération du rapport PDF structuré.'
+      : 'Python scripts on Abaqus/ANSYS outputs: automatic extraction of critical stresses, structured PDF report generation.',
+    metric: isFr ? '−65% de temps de post-traitement' : '−65% post-processing time',
+    metricSub: isFr ? 'sur études complexes' : 'on complex studies',
+    color: '#00D4FF',
+    icon: '⚡',
+  },
+  {
+    level: isFr ? 'Niveau 2 — IA Conseil' : 'Level 2 — Advisory AI',
+    title: isFr ? 'Optimisation paramétrique' : 'Parametric optimisation',
+    description: isFr
+      ? 'Exploration automatisée de l\'espace de conception via algorithmes évolutionnaires. Convergence vers le design optimal en un temps réduit.'
+      : 'Automated design space exploration via evolutionary algorithms. Convergence toward optimal design in reduced time.',
+    metric: isFr ? '200 configurations évaluées' : '200 configurations evaluated',
+    metricSub: isFr ? 'là où 10 seraient faites manuellement' : 'where 10 would be done manually',
+    color: '#A855F7',
+    icon: '🔬',
+  },
+  {
+    level: isFr ? 'Niveau 3 — Jumeau Numérique' : 'Level 3 — Digital Twin',
+    title: isFr ? 'Détection précoce d\'anomalies' : 'Early anomaly detection',
+    description: isFr
+      ? 'Modèle EF calibré sur données capteurs. Détection d\'anomalies comportementales avant l\'inspection physique. Applicable aux structures offshore sous surveillance DNV-GL.'
+      : 'FE model calibrated on sensor data. Behavioural anomaly detection before physical inspection. Applicable to offshore structures under DNV-GL monitoring.',
+    metric: isFr ? '3 à 6 mois d\'avance' : '3 to 6 months ahead',
+    metricSub: isFr ? 'avant défaillance visible' : 'before visible failure',
+    color: '#2ECC71',
+    icon: '🌐',
+  },
+];
+---
+
+<section class="section-padding bg-[var(--color-bg-secondary)] overflow-hidden" id="ia">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="mb-16 fade-up">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-px w-16 bg-[var(--color-accent-cyan)]"></span>
+        <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">
+          {isFr ? 'IA chez Ortenix' : 'AI at Ortenix'}
+        </span>
+      </div>
+      <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+        {isFr ? 'L\'intelligence artificielle' : 'Artificial intelligence'}<br/>
+        <span class="text-gradient-cyan">{isFr ? 'au service du calcul' : 'serving the calculation'}</span>
+      </h2>
+      <p class="mt-4 text-[var(--color-text-secondary)] max-w-xl">
+        {isFr
+          ? 'Pas un mot-clé. Une boîte à outils que nos ingénieurs utilisent pour aller plus vite, aller plus loin, et rater moins.'
+          : 'Not a buzzword. A toolbox our engineers use to go faster, go further, and miss less.'}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Gauche : niveaux avec métriques -->
+      <div class="stagger-container space-y-5">
+        {levels.map(lvl => (
+          <div
+            class="stagger-item group flex gap-5 p-6 bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl hover:border-current transition-all duration-300"
+            style={`--lvl-color: ${lvl.color};`}
+          >
+            <!-- Icon -->
+            <div
+              class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg text-2xl border"
+              style={`background: color-mix(in srgb, ${lvl.color} 10%, transparent); border-color: color-mix(in srgb, ${lvl.color} 25%, transparent);`}
+            >
+              {lvl.icon}
+            </div>
+
+            <div class="flex-1 min-w-0">
+              <span class="font-mono text-[11px] text-[var(--color-text-muted)] block mb-1">{lvl.level}</span>
+              <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--lvl-color)] transition-colors">
+                {lvl.title}
+              </h3>
+              <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-4">
+                {lvl.description}
+              </p>
+              <!-- Métrique -->
+              <div
+                class="inline-flex items-baseline gap-1.5 px-3 py-1.5 rounded-lg"
+                style={`background: color-mix(in srgb, ${lvl.color} 8%, transparent); border: 1px solid color-mix(in srgb, ${lvl.color} 20%, transparent);`}
+              >
+                <span class="font-mono font-bold text-sm" style={`color: ${lvl.color};`}>{lvl.metric}</span>
+                <span class="font-mono text-xs text-[var(--color-text-muted)]">— {lvl.metricSub}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        <!-- Encart responsabilité -->
+        <div class="p-5 border border-[var(--color-bg-border)] rounded-xl bg-[var(--color-bg-card)]" style="border-left: 3px solid var(--color-accent-gold);">
+          <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed italic">
+            {isFr
+              ? '"L\'IA accélère. L\'ingénieur décide. Chaque note de calcul Ortenix est signée par un ingénieur responsable. La responsabilité technique reste humaine."'
+              : '"AI accelerates. The engineer decides. Every Ortenix calculation note is signed by a responsible engineer. Technical responsibility remains human."'}
+          </p>
+        </div>
+      </div>
+
+      <!-- Droite : terminal -->
+      <div class="fade-up">
+        <TerminalAnimation />
+        <p class="mt-4 text-xs font-mono text-[var(--color-text-muted)] text-center">
+          {isFr
+            ? '↑ Simulation d\'analyse FEA automatisée par IA'
+            : '↑ AI-automated FEA analysis simulation'}
+        </p>
+
+        <!-- Stack IA -->
+        <div class="mt-6 p-5 bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl">
+          <p class="font-mono text-xs text-[var(--color-text-muted)] uppercase tracking-wide mb-3">
+            {isFr ? 'Stack technique IA' : 'AI tech stack'}
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {['Python', 'TensorFlow', 'Scikit-learn', 'Abaqus Scripting API', 'ANSYS APDL', 'PyMAPDL', 'Optimisation multi-objectifs'].map(t => (
+              <span class="font-mono text-xs px-2 py-1 rounded bg-[var(--color-bg-secondary)] border border-[var(--color-bg-border)] text-[var(--color-text-muted)]">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

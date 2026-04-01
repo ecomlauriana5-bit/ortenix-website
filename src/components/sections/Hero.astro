@@ -1,0 +1,160 @@
+---
+interface Props {
+  lang?: string;
+}
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+---
+
+<section class="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-[var(--color-bg-primary)]">
+
+  <!-- FEA Mesh Canvas -->
+  <canvas
+    id="hero-canvas"
+    class="absolute inset-0 w-full h-full pointer-events-none opacity-25"
+    aria-hidden="true"
+  ></canvas>
+
+  <!-- Halo layers -->
+  <div class="hero-halo absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div
+    class="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
+    style="background: radial-gradient(circle, rgba(0,194,255,0.06) 0%, transparent 70%); transform: translate(-50%,-50%);"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-24 text-center">
+
+    <!-- Badge -->
+    <div class="hero-anim inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-[rgba(0,194,255,0.3)] bg-[rgba(0,194,255,0.06)] text-xs font-mono text-[var(--color-accent-cyan)]">
+      <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-cyan)] animate-pulse"></span>
+      Bureau d'études · Offshore · Naval · Énergie · Nucléaire
+    </div>
+
+    <!-- H1 -->
+    <h1 class="hero-anim font-display font-extrabold leading-none" style="font-size: clamp(3rem, 9vw, 8rem);">
+      <span class="block text-[var(--color-text-primary)]">We build</span>
+      <span class="block text-gradient-cyan">certainty.</span>
+    </h1>
+
+    <!-- FR tagline -->
+    <p class="hero-anim mt-4 text-lg md:text-xl text-[var(--color-text-muted)] font-display">
+      Nous construisons la certitude.
+    </p>
+
+    <!-- Description -->
+    <p class="hero-anim mt-6 max-w-2xl mx-auto text-[var(--color-text-secondary)] leading-relaxed">
+      {isFr
+        ? 'Calcul de structures, simulation FEA multi-logiciels et IA appliquée. Bureau d\'études à Nantes — offshore · naval · énergie · nucléaire.'
+        : 'Structural analysis, multi-software FEA simulation and applied AI. Engineering firm in Nantes — offshore · naval · energy · nuclear.'}
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero-anim mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href="#contact"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-[var(--color-accent-cyan)] text-[var(--color-bg-primary)] font-semibold rounded-lg hover:bg-white transition-all duration-200 text-base shadow-[0_0_30px_rgba(0,212,255,0.3)]"
+      >
+        {isFr ? 'Démarrer un projet' : 'Start a project'}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+      <a
+        href="#references"
+        class="inline-flex items-center gap-2 px-8 py-4 border border-[var(--color-accent-cyan)] text-[var(--color-accent-cyan)] font-medium rounded-lg hover:bg-[rgba(0,212,255,0.08)] transition-all duration-200 text-base"
+      >
+        {isFr ? 'Voir les cas clients' : 'See case studies'} →
+      </a>
+    </div>
+
+    <!-- Stats pills -->
+    <div class="hero-anim mt-16 flex flex-wrap items-center justify-center gap-8 md:gap-16">
+      {[
+        { value: '120+', label: isFr ? 'projets réalisés' : 'completed projects' },
+        { value: '4',    label: isFr ? 'secteurs critiques' : 'critical sectors' },
+        { value: '48h',  label: isFr ? 'délai de devis' : 'quote turnaround' },
+        { value: '100%', label: 'NDA' },
+      ].map(stat => (
+        <div class="flex flex-col items-center gap-1">
+          <span class="font-mono text-2xl font-bold text-[var(--color-accent-cyan)]">{stat.value}</span>
+          <span class="text-xs text-[var(--color-text-muted)]">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+    <span class="text-xs font-mono text-[var(--color-text-muted)]">scroll</span>
+    <svg class="w-4 h-4 text-[var(--color-text-muted)] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
+
+<script>
+  // FEA Mesh Canvas
+  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement;
+  if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const ctx = canvas.getContext('2d')!;
+    let W = 0, H = 0, rafId: number;
+    let nodes: { x: number; y: number; vx: number; vy: number }[] = [];
+    const LINK_DIST = 160, NODE_COUNT = 70;
+
+    const resize = () => {
+      W = canvas.offsetWidth; H = canvas.offsetHeight;
+      canvas.width = W * devicePixelRatio; canvas.height = H * devicePixelRatio;
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      nodes = Array.from({ length: NODE_COUNT }, () => ({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+      }));
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      nodes.forEach(n => {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > W) n.vx *= -1;
+        if (n.y < 0 || n.y > H) n.vy *= -1;
+      });
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < LINK_DIST) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0,194,255,${(1 - d / LINK_DIST) * 0.5})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      nodes.forEach(n => {
+        ctx.beginPath(); ctx.arc(n.x, n.y, 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,194,255,0.6)'; ctx.fill();
+      });
+      rafId = requestAnimationFrame(draw);
+    };
+
+    new ResizeObserver(resize).observe(canvas.parentElement!);
+    resize(); draw();
+  }
+
+  // Staggered entrance animation via GSAP (progressive enhancement)
+  (async () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    try {
+      const { gsap } = await import('gsap');
+      const els = document.querySelectorAll('.hero-anim');
+      gsap.fromTo(els,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.12, delay: 0.1 }
+      );
+    } catch { /* GSAP unavailable — content already visible */ }
+  })();
+</script>

@@ -1,0 +1,112 @@
+---
+interface Props {
+  lang?: string;
+}
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+
+// Sur la homepage : uniquement 3 cartes selon le brief
+const expertises = [
+  {
+    icon: '📐',
+    title: isFr ? 'FEA Structures' : 'FEA Structures',
+    description: isFr
+      ? 'Analyse statique, dynamique, thermique, fatigue. Modélisation haute-fidélité sur vos logiciels — ANSYS, Abaqus, NASTRAN.'
+      : 'Static, dynamic, thermal, fatigue analysis. High-fidelity modelling on your software — ANSYS, Abaqus, NASTRAN.',
+    tools: ['ANSYS Mechanical', 'Abaqus/Standard', 'MSC NASTRAN', 'FEMAP', 'Code_Aster'],
+    livrable: isFr ? 'Note de calcul structurée · Hypothèses tracées · Rapport PDF référencé' : 'Structured calculation note · Traced assumptions · Referenced PDF report',
+    color: '#00D4FF',
+  },
+  {
+    icon: '🔧',
+    title: isFr ? 'Tuyauteries & Pression' : 'Piping & Pressure',
+    description: isFr
+      ? 'Analyse de contraintes, flexibilité, qualification selon CODAP, CODETI, EN 13480. De la conception à la conformité réglementaire.'
+      : 'Stress analysis, flexibility, qualification per CODAP, CODETI, EN 13480. From design to regulatory compliance.',
+    tools: ['CAESAR II', 'AutoPIPE', 'PIPESIM', 'ISOGEN'],
+    livrable: isFr ? 'Note de flexibilité · Vérification CODAP/CODETI · Rapport sismique' : 'Flexibility note · CODAP/CODETI verification · Seismic report',
+    color: '#C9A84C',
+  },
+  {
+    icon: '🤖',
+    title: isFr ? 'IA & Simulation' : 'AI & Simulation',
+    description: isFr
+      ? 'Post-processing automatisé, optimisation paramétrique, détection d\'anomalies. Python et scripts Abaqus sur vos données métier.'
+      : 'Automated post-processing, parametric optimisation, anomaly detection. Python and Abaqus scripts on your business data.',
+    tools: ['Python', 'Abaqus Scripting', 'PyMAPDL', 'Scikit-learn'],
+    livrable: isFr ? 'Rapport d\'analyse · Cartographies de résultats · Synthèse comparative' : 'Analysis report · Result maps · Comparative summary',
+    color: '#A855F7',
+  },
+];
+---
+
+<section class="section-padding bg-[var(--color-bg-primary)]" id="expertises">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 fade-up">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-16 bg-[var(--color-accent-cyan)]"></span>
+          <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">
+            {isFr ? 'Nos expertises' : 'Our expertise'}
+          </span>
+        </div>
+        <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+          {isFr ? 'Calcul, simulation,' : 'Calculation, simulation,'}<br/>
+          <span class="text-gradient-cyan">{isFr ? 'intelligence artificielle' : 'artificial intelligence'}</span>
+        </h2>
+      </div>
+      <a
+        href="/expertises"
+        class="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent-cyan)] border border-[var(--color-accent-cyan)] px-5 py-2.5 rounded-lg hover:bg-[rgba(0,212,255,0.08)] transition-colors shrink-0"
+      >
+        {isFr ? 'Toutes les expertises' : 'All expertise'} →
+      </a>
+    </div>
+
+    <!-- 3 cartes -->
+    <div class="stagger-container grid grid-cols-1 md:grid-cols-3 gap-6">
+      {expertises.map(exp => (
+        <div
+          class="stagger-item group relative bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-8 flex flex-col gap-5 hover:-translate-y-1 transition-all duration-300"
+          style={`--exp-color: ${exp.color};`}
+        >
+          <!-- Top accent -->
+          <div class="absolute top-0 left-0 right-0 h-[2px] rounded-t-xl opacity-0 group-hover:opacity-100 transition-opacity" style={`background: ${exp.color};`}></div>
+
+          <!-- Icon -->
+          <div class="w-12 h-12 flex items-center justify-center rounded-lg text-2xl border" style={`background: color-mix(in srgb, ${exp.color} 10%, transparent); border-color: color-mix(in srgb, ${exp.color} 25%, transparent);`}>
+            {exp.icon}
+          </div>
+
+          <div>
+            <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--exp-color)] transition-colors">
+              {exp.title}
+            </h3>
+            <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+              {exp.description}
+            </p>
+          </div>
+
+          <!-- Logiciels -->
+          <div class="flex flex-wrap gap-1.5">
+            {exp.tools.map(t => (
+              <span class="font-mono text-xs px-2 py-0.5 rounded bg-[var(--color-bg-secondary)] border border-[var(--color-bg-border)] text-[var(--color-text-muted)]">
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <!-- Livrable -->
+          <div class="mt-auto pt-4 border-t border-[var(--color-bg-border)]">
+            <p class="font-mono text-[11px] uppercase tracking-wide mb-1" style={`color: ${exp.color};`}>
+              {isFr ? 'Livrable type' : 'Typical deliverable'}
+            </p>
+            <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">{exp.livrable}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

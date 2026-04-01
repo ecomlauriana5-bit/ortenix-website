@@ -1,0 +1,68 @@
+---
+interface Props {
+  name: string;
+  color: string;
+  baseline: string;
+  description: string;
+  icon: string;
+  norms: string[];
+  href?: string;
+}
+
+const { name, color, baseline, description, icon, norms, href = '#' } = Astro.props;
+---
+
+<article
+  class="sector-card group relative bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-8 flex flex-col gap-5 cursor-pointer transition-all duration-300 hover:border-current hover:-translate-y-1"
+  style={`--sector-color: ${color};`}
+>
+  <!-- Top accent bar -->
+  <div class="absolute top-0 left-0 right-0 h-[2px] rounded-t-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={`background: ${color};`}></div>
+
+  <!-- Icon -->
+  <div class="w-12 h-12 flex items-center justify-center rounded-lg border border-[var(--color-bg-border)] group-hover:border-current transition-colors" style={`border-color: color-mix(in srgb, ${color} 30%, transparent);`}>
+    <span class="text-2xl" aria-hidden="true">{icon}</span>
+  </div>
+
+  <!-- Header -->
+  <div>
+    <h3 class="font-display font-semibold text-xl text-[var(--color-text-primary)] mb-1 group-hover:text-[var(--sector-color)] transition-colors">
+      {name}
+    </h3>
+    <p class="text-sm font-mono text-[var(--color-text-muted)]">{baseline}</p>
+  </div>
+
+  <!-- Description -->
+  <p class="text-[var(--color-text-secondary)] text-sm leading-relaxed flex-1">
+    {description}
+  </p>
+
+  <!-- Norms -->
+  <div class="flex flex-wrap gap-2">
+    {norms.map(norm => (
+      <span class="font-mono text-xs px-2 py-1 rounded bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] border border-[var(--color-bg-border)]">
+        {norm}
+      </span>
+    ))}
+  </div>
+
+  <!-- Link -->
+  {href !== '#' && (
+    <a
+      href={href}
+      class="flex items-center gap-2 text-sm font-medium mt-2 transition-colors"
+      style={`color: ${color};`}
+    >
+      En savoir plus
+      <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </svg>
+    </a>
+  )}
+
+  <!-- Glow on hover -->
+  <div
+    class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+    style={`box-shadow: inset 0 0 40px color-mix(in srgb, ${color} 5%, transparent);`}
+  ></div>
+</article>

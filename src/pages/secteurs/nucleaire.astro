@@ -1,0 +1,93 @@
+---
+import SectorLayout from '../../layouts/SectorLayout.astro';
+---
+
+<SectorLayout
+  title="Nucléaire — Ingénierie de sûreté & conformité RCC-M | Ortenix"
+  description="Bureau d'études nucléaire spécialisé en RCC-M, RSE-M, ASME III et ESPN. Études mécaniques pour composants soumis aux contraintes les plus sévères."
+  lang="fr"
+  sectorName="Nucléaire"
+  sectorBaseline="Qualité · Sûreté · Conformité ESPN · Rigueur maximale"
+  sectorColor="#2ECC71"
+  sectorIcon="⚛️"
+>
+
+  <!-- Enjeux -->
+  <section class="section-padding bg-[var(--color-bg-primary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-12 fade-up">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-12 bg-[#2ECC71]"></span>
+          <span class="font-mono text-xs uppercase tracking-widest" style="color:#2ECC71">Enjeux</span>
+        </div>
+        <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+          La rigueur nucléaire,<br/><span style="background:linear-gradient(135deg,#2ECC71,#27AE60);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">sans compromis</span>
+        </h2>
+      </div>
+
+      <div class="stagger-container grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { icon: '🔬', title: 'Qualification réglementaire', desc: 'ESPN, CODEP, arrêtés ministériels : chaque composant doit être rigoureusement qualifié selon la réglementation française et internationale.' },
+          { icon: '📊', title: 'Traçabilité totale', desc: 'Dossiers de fabrication, notes de calcul référencées, revues documentaires : la traçabilité est la base de toute étude nucléaire.' },
+          { icon: '🛡️', title: 'Sûreté & défense en profondeur', desc: 'Analyse des scénarios accidentels, marges de sûreté, barrières de confinement : la sûreté est intégrée dès la conception.' },
+        ].map(e => (
+          <div class="stagger-item bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-6 hover:border-[#2ECC71] transition-colors">
+            <span class="text-3xl block mb-4">{e.icon}</span>
+            <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-2">{e.title}</h3>
+            <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">{e.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Normes & Logiciels -->
+  <section class="section-padding bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 fade-up">
+        <div>
+          <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-4">Référentiels maîtrisés</h3>
+          <div class="flex flex-wrap gap-2">
+            {['RCC-M', 'RSE-M', 'ASME III', 'ESPN', 'RFS I.2.d', 'CODEP', 'RCCMX', 'EN 13445'].map(n => (
+              <span class="font-mono text-xs px-3 py-1.5 rounded bg-[var(--color-bg-card)] border border-[var(--color-bg-border)]" style="color:#2ECC71">{n}</span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-4">Outils</h3>
+          <div class="flex flex-wrap gap-2">
+            {['ANSYS Mechanical', 'ABAQUS', 'SYSTUS', 'Code_Aster', 'AutoPIPE Nuclear', 'MATHCAD'].map(s => (
+              <span class="font-mono text-xs px-3 py-1.5 rounded bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] text-[var(--color-text-muted)]">{s}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cas client -->
+  <section class="section-padding bg-[var(--color-bg-primary)]">
+    <div class="max-w-4xl mx-auto px-6 fade-up">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="h-px w-12 bg-[#2ECC71]"></span>
+        <span class="font-mono text-xs uppercase tracking-widest" style="color:#2ECC71">Cas client anonymisé</span>
+      </div>
+      <div class="bg-[var(--color-bg-card)] border rounded-2xl p-8" style="border-color:rgba(46,204,113,0.2)">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-4 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-bg-border)]">
+            <p class="font-mono text-xs text-[var(--color-text-muted)] mb-2 uppercase">Problème</p>
+            <p class="text-sm text-[var(--color-text-secondary)]">Remplacement d'un composant de tuyauterie de circuit primaire en centrale nucléaire. Qualification ESPN requise.</p>
+          </div>
+          <div class="p-4 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-bg-border)]">
+            <p class="font-mono text-xs text-[var(--color-text-muted)] mb-2 uppercase">Approche</p>
+            <p class="text-sm text-[var(--color-text-secondary)]">Note de calcul RCC-M niveau N1, analyse de flexibilité, vérification des assemblages boulonnés, dossier de qualification complet.</p>
+          </div>
+          <div class="p-4 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-bg-border)]">
+            <p class="font-mono text-xs mb-2 uppercase" style="color:#2ECC71">Résultat</p>
+            <p class="text-sm text-[var(--color-text-secondary)]">Qualification obtenue du premier coup. Aucune itération avec l'ASN. Mise en service dans les délais de l'arrêt de tranche.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</SectorLayout>

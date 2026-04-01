@@ -1,0 +1,37 @@
+---
+// Bande normes — aucun titre, aucune explication. Juste les codes.
+const norms = [
+  'RCC-M', 'API 579', 'API 650', 'DNV-GL', 'Bureau Veritas',
+  'ASME VIII', 'CODAP', 'EN 13480', 'API RP 2A', 'ASME III',
+  'CODETI', 'ISO 19901', 'Lloyd\'s Register', 'RSE-M', 'Eurocodes',
+];
+---
+
+<div class="w-full overflow-hidden border-y border-[var(--color-bg-border)]" style="background: #0D1F35;">
+  <div class="relative flex">
+    <!-- Track animé -->
+    <div class="norms-track flex items-center gap-8 py-4 whitespace-nowrap">
+      {[...norms, ...norms].map(norm => (
+        <span class="font-mono text-[13px] text-[#8BA3BC] shrink-0 flex items-center gap-8">
+          {norm}
+          <span class="text-[var(--color-accent-cyan)] opacity-30">·</span>
+        </span>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .norms-track {
+    animation: scroll-norms 40s linear infinite;
+  }
+
+  @keyframes scroll-norms {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .norms-track { animation: none; }
+  }
+</style>

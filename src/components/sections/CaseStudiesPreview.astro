@@ -1,0 +1,124 @@
+---
+interface Props {
+  lang?: string;
+}
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+
+const cases = [
+  {
+    sector: isFr ? 'Offshore' : 'Offshore',
+    color: '#00D4FF',
+    icon: '⚓',
+    title: isFr ? 'Analyse de fatigue — plateforme jacket Mer du Nord' : 'Fatigue analysis — North Sea jacket platform',
+    duration: '6 semaines',
+    summary: isFr
+      ? 'Fissures détectées sur nœuds tubulaires critiques. Décision d\'exploitation urgente requise par l\'opérateur.'
+      : 'Cracks detected on critical tubular nodes. Urgent operational decision required by the operator.',
+    result: isFr ? 'Durée de vie résiduelle de 8 ans confirmée. Plateforme maintenue sans shutdown.' : '8-year residual life confirmed. Platform kept operational without shutdown.',
+    norms: ['DNV-RP-C203', 'API RP 2A', 'DNV-ST-0126'],
+  },
+  {
+    sector: isFr ? 'Nucléaire' : 'Nuclear',
+    color: '#2ECC71',
+    icon: '⚛️',
+    title: isFr ? 'Qualification RCC-M — remplacement composant ESPN N1' : 'RCC-M qualification — ESPN N1 component replacement',
+    duration: '8 semaines',
+    summary: isFr
+      ? 'Remplacement d\'un composant ESPN Niveau N1 sur circuit primaire dans la fenêtre d\'arrêt de tranche.'
+      : 'Replacement of an ESPN Level N1 component on primary circuit during scheduled outage window.',
+    result: isFr ? 'Qualification obtenue sans itération ASN. Redémarrage respecté. Zéro non-conformité.' : 'Qualification obtained without ASN iteration. Restart on schedule. Zero non-conformity.',
+    norms: ['RCC-M N1', 'ESPN', 'ASN RFS I.2.d'],
+  },
+  {
+    sector: isFr ? 'Naval' : 'Naval',
+    color: '#4A90D9',
+    icon: '🚢',
+    title: isFr ? 'Optimisation structurelle coque — programme défense' : 'Hull structural optimisation — defence programme',
+    duration: '10 semaines',
+    summary: isFr
+      ? 'Réduction de masse sur section de coque avec maintien de la conformité BV Marine et des exigences STANAG.'
+      : 'Mass reduction on hull section while maintaining BV Marine compliance and STANAG requirements.',
+    result: isFr ? '−12% de masse sur la section. Conformité BV Marine maintenue. Livré dans les délais programme.' : '−12% mass on section. BV Marine compliance maintained. Delivered on programme schedule.',
+    norms: ['BV NR467', 'STANAG 4154', 'DNV GL'],
+  },
+];
+---
+
+<section class="section-padding bg-[var(--color-bg-secondary)]" id="references">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 fade-up">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-16 bg-[var(--color-accent-cyan)]"></span>
+          <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">
+            {isFr ? 'Cas clients' : 'Case studies'}
+          </span>
+        </div>
+        <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+          {isFr ? 'Des projets réels,' : 'Real projects,'}<br/>
+          <span class="text-gradient-cyan">{isFr ? 'des résultats mesurables' : 'measurable results'}</span>
+        </h2>
+      </div>
+      <a
+        href="/references"
+        class="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent-cyan)] border border-[var(--color-accent-cyan)] px-5 py-2.5 rounded-lg hover:bg-[rgba(0,212,255,0.08)] transition-colors shrink-0"
+      >
+        {isFr ? 'Toutes les références' : 'All references'} →
+      </a>
+    </div>
+
+    <!-- 3 cas -->
+    <div class="stagger-container grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {cases.map(c => (
+        <article class="stagger-item bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl overflow-hidden flex flex-col hover:border-current transition-colors duration-300 group" style={`--case-color: ${c.color};`}>
+
+          <!-- Header -->
+          <div class="flex items-center gap-3 px-6 py-4 border-b border-[var(--color-bg-border)]" style={`background: color-mix(in srgb, ${c.color} 5%, transparent);`}>
+            <span class="text-xl">{c.icon}</span>
+            <div class="flex-1 min-w-0">
+              <span class="font-mono text-xs uppercase tracking-widest" style={`color: ${c.color};`}>{c.sector}</span>
+            </div>
+            <span class="font-mono text-xs text-[var(--color-text-muted)] shrink-0">{c.duration}</span>
+          </div>
+
+          <!-- Body -->
+          <div class="p-6 flex flex-col gap-4 flex-1">
+            <h3 class="font-display font-semibold text-[var(--color-text-primary)] text-sm leading-snug group-hover:text-[var(--case-color)] transition-colors">
+              {c.title}
+            </h3>
+            <p class="text-xs text-[var(--color-text-secondary)] leading-relaxed">
+              {c.summary}
+            </p>
+
+            <!-- Résultat -->
+            <div class="mt-auto pt-3 border-t border-[var(--color-bg-border)]">
+              <p class="font-mono text-xs uppercase tracking-wide mb-1.5" style={`color: ${c.color};`}>
+                {isFr ? 'Résultat' : 'Result'}
+              </p>
+              <p class="text-xs text-[var(--color-text-secondary)] leading-relaxed">{c.result}</p>
+            </div>
+
+            <!-- Norms -->
+            <div class="flex flex-wrap gap-1.5">
+              {c.norms.map(n => (
+                <span class="font-mono text-[10px] px-2 py-0.5 rounded border border-[var(--color-bg-border)] text-[var(--color-text-muted)]">
+                  {n}
+                </span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Note NDA -->
+    <p class="mt-8 text-center font-mono text-xs text-[var(--color-text-muted)]">
+      🔒 {isFr
+        ? 'Les noms de clients sont anonymisés sur demande. Références détaillées disponibles sous NDA.'
+        : 'Client names anonymised on request. Detailed references available under NDA.'}
+    </p>
+  </div>
+</section>

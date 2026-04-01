@@ -1,0 +1,67 @@
+---
+import SectorLayout from '../../layouts/SectorLayout.astro';
+---
+
+<SectorLayout
+  title="Énergie — Simulation numérique & jumeau numérique | Ortenix"
+  description="Bureau d'études énergie spécialisé en simulation thermomécanique, jumeau numérique et équipements sous pression. Conformité IEC, EN 13445, CODAP, Eurocodes."
+  lang="fr"
+  sectorName="Énergie"
+  sectorBaseline="Simulation · Jumeau numérique · Équipements sous pression"
+  sectorColor="#C8A84B"
+  sectorIcon="⚡"
+>
+
+  <!-- Enjeux -->
+  <section class="section-padding bg-[var(--color-bg-primary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-12 fade-up">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-12" style="background:#C8A84B"></span>
+          <span class="font-mono text-xs uppercase tracking-widest" style="color:#C8A84B">Enjeux</span>
+        </div>
+        <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+          L'énergie de demain<br/><span style="background:linear-gradient(135deg,#C8A84B,#E8C87A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">exige l'ingénierie d'aujourd'hui</span>
+        </h2>
+      </div>
+
+      <div class="stagger-container grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { icon: '🏭', title: 'Équipements sous pression', desc: 'Conception et vérification selon CODAP, EN 13445, ASME VIII. Des échangeurs de chaleur aux réservoirs haute pression.' },
+          { icon: '🌡️', title: 'Thermomécanique', desc: 'Couplage thermique-mécanique, dilatation, contraintes thermorsiduelles : la simulation numérique révèle ce que l\'expérience ne peut pas anticiper.' },
+          { icon: '🔗', title: 'Jumeau numérique', desc: 'Modèle numérique couplé aux données capteurs pour la surveillance temps réel, la détection d\'anomalies et l\'optimisation des paramètres opératoires.' },
+        ].map(e => (
+          <div class="stagger-item bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-6 hover:border-[#C8A84B] transition-colors">
+            <span class="text-3xl block mb-4">{e.icon}</span>
+            <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-2">{e.title}</h3>
+            <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">{e.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Normes & Logiciels -->
+  <section class="section-padding bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 fade-up">
+        <div>
+          <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-4">Référentiels</h3>
+          <div class="flex flex-wrap gap-2">
+            {['IEC 61400', 'EN 13445', 'CODAP', 'Eurocodes 3', 'ASME VIII', 'PED 2014/68/UE'].map(n => (
+              <span class="font-mono text-xs px-3 py-1.5 rounded bg-[var(--color-bg-card)] border border-[var(--color-bg-border)]" style="color:#C8A84B">{n}</span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-4">Logiciels</h3>
+          <div class="flex flex-wrap gap-2">
+            {['ANSYS Fluent', 'ANSYS Mechanical', 'OpenFOAM', 'STAR-CCM+', 'Python', 'MATLAB'].map(s => (
+              <span class="font-mono text-xs px-3 py-1.5 rounded bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] text-[var(--color-text-muted)]">{s}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</SectorLayout>

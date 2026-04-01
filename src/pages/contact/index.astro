@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Contact from '../../components/sections/Contact.astro';
+---
+
+<BaseLayout
+  title="Contact — Devis 48h & échange confidentiel | Ortenix"
+  description="Contactez Ortenix pour discuter de votre projet d'ingénierie. Réponse garantie sous 48h. NDA systématique sur demande. Prise de RDV Calendly disponible."
+  lang="fr"
+>
+  <!-- Hero -->
+  <section class="relative py-24 bg-[var(--color-bg-primary)] overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 40% 50% at 80% 50%, rgba(0,194,255,0.06) 0%, transparent 70%);"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+        <a href="/" class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest hover:underline">← Accueil</a>
+      </div>
+      <h1 class="font-display font-extrabold text-[var(--color-text-primary)] mb-4" style="font-size: clamp(2.5rem, 5vw, 5rem);">
+        Parlons de votre<br/><span class="text-gradient-cyan">projet</span>
+      </h1>
+      <p class="text-[var(--color-text-secondary)] max-w-xl text-lg leading-relaxed">
+        Échange confidentiel, réponse technique sous 48h, NDA disponible dès la première prise de contact.
+      </p>
+    </div>
+  </section>
+
+  <Contact lang="fr" />
+</BaseLayout>

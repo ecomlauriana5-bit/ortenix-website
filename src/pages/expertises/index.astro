@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Contact from '../../components/sections/Contact.astro';
+
+const expertises = [
+  {
+    id: 'fea',
+    icon: '📐',
+    title: 'Calcul par Éléments Finis (FEA)',
+    baseline: 'Analyse statique · Dynamique · Thermique · Non-linéaire',
+    description: 'Modélisation haute-fidélité pour prédire le comportement mécanique réel de vos structures. Nous couvrons l\'analyse linéaire et non-linéaire (contacts, grandes déformations, plasticité), les analyses modales et dynamiques temporelles, et les couplages thermo-mécaniques.',
+    capabilities: [
+      'Analyse statique linéaire et non-linéaire',
+      'Analyse modale et spectrale',
+      'Analyse de flambement',
+      'Couplage thermo-mécanique',
+      'Mécanique de la rupture (LEFM, EPFM)',
+      'Optimisation topologique',
+    ],
+    tools: ['ANSYS Mechanical', 'ABAQUS/Standard', 'ABAQUS/Explicit', 'MSC NASTRAN', 'Code_Aster'],
+    color: '#00C2FF',
+  },
+  {
+    id: 'cfd',
+    icon: '🌊',
+    title: 'Simulation des Fluides (CFD)',
+    baseline: 'Écoulements · Transferts thermiques · Diphasique',
+    description: 'De l\'aérodynamique aux écoulements internes complexes, nos experts CFD modélisent les phénomènes fluidiques qui déterminent les performances de vos équipements. Turbulence, combustion, multiphase : aucun phénomène ne nous est étranger.',
+    capabilities: [
+      'Écoulements internes / externes',
+      'Transferts de chaleur (convection, conduction, rayonnement)',
+      'Écoulements diphasiques et multiphasiques',
+      'Aérodynamique et hydrodynamique',
+      'CFD réactive (combustion)',
+      'Couplage FSI (fluide-structure)',
+    ],
+    tools: ['ANSYS Fluent', 'ANSYS CFX', 'OpenFOAM', 'STAR-CCM+', 'SimScale'],
+    color: '#0066CC',
+  },
+  {
+    id: 'piping',
+    icon: '🔧',
+    title: 'Tuyauterie & Flexibilité',
+    baseline: 'Contraintes · Flexibilité · Qualification réglementaire',
+    description: 'Analyse de contraintes selon les codes de pression internationaux. Nous qualifions vos tuyauteries des phases de conception jusqu\'à la mise en service, en assurant la conformité avec les exigences réglementaires de vos secteurs.',
+    capabilities: [
+      'Analyse de flexibilité et de contraintes',
+      'Calcul selon ASME B31.1, B31.3, EN 13480',
+      'Qualification sismique et dynamique',
+      'Vérification des supports et ancrages',
+      'Analyse des vannes et équipements en ligne',
+      'Isométriques et plans d\'implantation',
+    ],
+    tools: ['CAESAR II', 'AutoPIPE', 'ROHR2', 'ISOGEN', 'SmartPlant P&ID'],
+    color: '#C8A84B',
+  },
+  {
+    id: 'cad',
+    icon: '🏗️',
+    title: 'Conception & CAO',
+    baseline: 'Conception détaillée · Maquette numérique · Clash detection',
+    description: 'De la conception préliminaire à la définition détaillée, nos ingénieurs CAO produisent des livrables directement exploitables par vos équipes de fabrication et vos donneurs d\'ordre. Compatibilité garantie avec vos outils et vos standards.',
+    capabilities: [
+      'Conception mécanique 3D',
+      'Assemblages et mise en plan',
+      'Maquette numérique globale (BIM/3D)',
+      'Détection de clash automatisée',
+      'Nomenclatures et livrables projet',
+      'Rétroconception et scan-to-CAD',
+    ],
+    tools: ['CATIA V5/V6', 'SolidWorks', 'AVEVA E3D', 'AutoCAD Plant 3D', 'Revit'],
+    color: '#2ECC71',
+  },
+  {
+    id: 'ai',
+    icon: '🤖',
+    title: 'IA & Data Engineering',
+    baseline: 'Machine Learning · Maintenance prédictive · Jumeau numérique',
+    description: 'L\'intelligence artificielle appliquée aux données industrielles réelles. Nous développons des modèles sur mesure entraînés sur vos données, validés par vos ingénieurs et intégrés dans vos systèmes opérationnels.',
+    capabilities: [
+      'Modèles de maintenance prédictive',
+      'Détection d\'anomalies en temps réel',
+      'Optimisation de paramètres par ML',
+      'Jumeaux numériques couplés aux capteurs',
+      'Traitement de séries temporelles',
+      'Dashboards et visualisation',
+    ],
+    tools: ['Python', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'MATLAB', 'Apache Kafka'],
+    color: '#A855F7',
+  },
+];
+---
+
+<BaseLayout
+  title="Nos expertises — FEA, CFD, Tuyauterie, CAO, IA | Ortenix"
+  description="5 domaines d'expertise technique : calcul par éléments finis FEA, simulation CFD, analyse de tuyauterie, conception CAO et intelligence artificielle industrielle."
+  lang="fr"
+>
+  <!-- Hero -->
+  <section class="relative py-24 bg-[var(--color-bg-primary)] overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 60% at 80% 30%, rgba(0,102,204,0.06) 0%, transparent 70%);"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+        <a href="/" class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest hover:underline">← Accueil</a>
+      </div>
+      <h1 class="font-display font-extrabold text-[var(--color-text-primary)] mb-4" style="font-size: clamp(2.5rem, 5vw, 5rem);">
+        Nos <span class="text-gradient-cyan">expertises</span>
+      </h1>
+      <p class="text-[var(--color-text-secondary)] max-w-xl text-lg leading-relaxed">
+        Des méthodes éprouvées, des logiciels de référence industrielle, une équipe qui connaît vos normes et vos enjeux.
+      </p>
+    </div>
+  </section>
+
+  <!-- Expertise list -->
+  <section class="section-padding bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-6 space-y-12">
+      {expertises.map((exp, i) => (
+        <article
+          id={exp.id}
+          class={`stagger-container grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+        >
+          <!-- Text -->
+          <div class="stagger-item">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-3xl">{exp.icon}</span>
+              <span class="font-mono text-xs px-2 py-1 rounded border" style={`color: ${exp.color}; border-color: ${exp.color}30; background: ${exp.color}08;`}>
+                {exp.baseline}
+              </span>
+            </div>
+            <h2 class="font-display font-bold text-[var(--color-text-primary)] mb-4" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">
+              {exp.title}
+            </h2>
+            <p class="text-[var(--color-text-secondary)] leading-relaxed mb-6">{exp.description}</p>
+            <a href="#contact" class="inline-flex items-center gap-2 text-sm font-medium hover:underline transition-colors" style={`color: ${exp.color};`}>
+              Discutons de votre projet
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Capabilities + Tools -->
+          <div class="stagger-item bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-2xl p-8" style={`border-left: 3px solid ${exp.color};`}>
+            <h3 class="font-display font-semibold text-[var(--color-text-primary)] text-sm uppercase tracking-wide mb-4">Capacités</h3>
+            <ul class="space-y-2 mb-6">
+              {exp.capabilities.map(cap => (
+                <li class="flex items-start gap-2 text-sm text-[var(--color-text-secondary)]">
+                  <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={`color: ${exp.color};`}>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {cap}
+                </li>
+              ))}
+            </ul>
+            <div class="border-t border-[var(--color-bg-border)] pt-5">
+              <h3 class="font-mono text-xs text-[var(--color-text-muted)] uppercase tracking-wide mb-3">Logiciels</h3>
+              <div class="flex flex-wrap gap-2">
+                {exp.tools.map(tool => (
+                  <span class="font-mono text-xs px-2.5 py-1 rounded bg-[var(--color-bg-secondary)] border border-[var(--color-bg-border)] text-[var(--color-text-muted)]">
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Dans votre environnement -->
+  <section class="section-padding bg-[var(--color-bg-primary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-12 fade-up">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+          <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">Dans votre environnement</span>
+        </div>
+        <h2 class="font-display font-bold text-[var(--color-text-primary)] mb-4">
+          Nous travaillons avec<br/><span class="text-gradient-cyan">vos logiciels</span>
+        </h2>
+        <p class="text-[var(--color-text-secondary)] max-w-xl">
+          Nos ingénieurs s'intègrent dans votre workflow sans friction. NASTRAN/FEMAP, SACS, ANSYS, Stead Pro, Abaqus — si c'est votre outil, c'est le nôtre.
+        </p>
+      </div>
+      <div class="stagger-container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        {[
+          'ANSYS Mechanical', 'Abaqus/Standard', 'Abaqus/Explicit',
+          'MSC NASTRAN', 'FEMAP', 'SACS',
+          'CAESAR II', 'PIPESIM', 'STAR-CCM+',
+          'OpenFOAM', 'Code_Aster', 'Stead Pro',
+        ].map(tool => (
+          <div class="stagger-item bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-lg p-3 text-center hover:border-[var(--color-accent-cyan)] transition-colors">
+            <span class="font-mono text-xs text-[var(--color-text-secondary)]">{tool}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ technique -->
+  <section class="section-padding bg-[var(--color-bg-secondary)]">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="mb-10 fade-up">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-12 bg-[var(--color-accent-cyan)]"></span>
+          <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">FAQ technique</span>
+        </div>
+        <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+          Questions fréquentes
+        </h2>
+      </div>
+      <div class="space-y-4">
+        {[
+          {
+            q: 'Travaillez-vous dans nos logiciels ou les vôtres ?',
+            a: 'Dans les vôtres, systématiquement. Si votre équipe travaille sur NASTRAN/FEMAP, SACS ou Stead Pro, nos ingénieurs s\'y intègrent directement. Pas de friction, pas de conversion de fichiers à perte.',
+          },
+          {
+            q: 'Nos calculs sont-ils révisables et auditables ?',
+            a: 'Oui. Hypothèses tracées, méthodologie documentée, rapport révisable à chaque étape. Chaque note de calcul Ortenix est structurée pour qu\'un tiers puisse l\'auditer sans avoir à vous appeler.',
+          },
+          {
+            q: 'Quel délai pour une étude FEA complète ?',
+            a: 'De 5 jours ouvrés pour une analyse statique simple à 6 semaines pour une étude de fatigue complexe avec histogramme de chargement et rapport de conformité DNV ou RCC-M.',
+          },
+          {
+            q: 'Gérez-vous la confidentialité des données ?',
+            a: 'NDA signé avant tout échange technique, sur demande dès le devis. Vos modèles, vos données et vos résultats ne sortent pas de notre périmètre.',
+          },
+        ].map((faq, i) => (
+          <details class="fade-up group bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none hover:bg-[var(--color-bg-secondary)] transition-colors">
+              <span class="font-display font-semibold text-[var(--color-text-primary)] text-sm">{faq.q}</span>
+              <svg class="w-4 h-4 text-[var(--color-accent-cyan)] flex-shrink-0 transition-transform group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </summary>
+            <div class="px-6 pb-5 text-sm text-[var(--color-text-secondary)] leading-relaxed border-t border-[var(--color-bg-border)] pt-4">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Contact lang="fr" />
+</BaseLayout>

@@ -1,0 +1,89 @@
+---
+interface Props {
+  lang?: string;
+}
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+
+const figures = [
+  { value: 120, suffix: '+', label: isFr ? 'études livrées' : 'delivered studies' },
+  { value: 4,   suffix: '',  label: isFr ? 'secteurs critiques' : 'critical sectors' },
+  { value: 48,  suffix: 'h', label: isFr ? 'devis structuré' : 'structured quote' },
+  { value: 100, suffix: '%', label: isFr ? 'NDA systématique' : 'systematic NDA' },
+];
+const geoLabel = isFr ? 'Nantes · Saint-Nazaire · France' : 'Nantes · Saint-Nazaire · France';
+---
+
+<section class="section-padding bg-[var(--color-bg-secondary)] border-y border-[var(--color-bg-border)]" id="chiffres">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Section label -->
+    <div class="flex items-center gap-3 mb-12 fade-up">
+      <span class="h-px flex-1 max-w-[60px] bg-[var(--color-accent-cyan)]"></span>
+      <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">
+        {isFr ? 'Chiffres clés' : 'Key figures'}
+      </span>
+    </div>
+
+    <div class="stagger-container grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4">
+      {figures.map((fig) => (
+        <div class="stagger-item text-center">
+          <span
+            class="counter font-mono text-5xl lg:text-6xl font-bold text-[var(--color-accent-cyan)] tabular-nums block mb-2"
+            data-target={fig.value}
+            data-suffix={fig.suffix}
+          >
+            0{fig.suffix}
+          </span>
+          <p class="text-[var(--color-text-secondary)] text-sm leading-tight">
+            {fig.label}
+          </p>
+        </div>
+      ))}
+      <!-- 5ème élément : ancrage géographique -->
+      <div class="stagger-item text-center col-span-2 lg:col-span-1">
+        <span class="font-mono text-lg font-bold text-[var(--color-accent-gold)] block mb-2 leading-tight">
+          Nantes<br/>Saint-Nazaire
+        </span>
+        <p class="text-[var(--color-text-secondary)] text-sm leading-tight">France</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const counters = document.querySelectorAll<HTMLElement>('.counter');
+
+  const animateCounter = (el: HTMLElement) => {
+    const target = parseInt(el.dataset.target || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+
+    const tick = (now: number) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const value = Math.round(eased * target);
+      el.textContent = `${value}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      requestAnimationFrame(tick);
+    } else {
+      el.textContent = `${target}${suffix}`;
+    }
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target as HTMLElement);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(c => observer.observe(c));
+</script>

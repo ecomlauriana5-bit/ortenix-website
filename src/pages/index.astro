@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import NormsBar from '../components/sections/NormsBar.astro';
+import KeyFigures from '../components/sections/KeyFigures.astro';
+import WhyOrtenix from '../components/sections/WhyOrtenix.astro';
+import Sectors from '../components/sections/Sectors.astro';
+import Expertise from '../components/sections/Expertise.astro';
+import CaseStudiesPreview from '../components/sections/CaseStudiesPreview.astro';
+import AISection from '../components/sections/AISection.astro';
+import References from '../components/sections/References.astro';
+import Team from '../components/sections/Team.astro';
+import Contact from '../components/sections/Contact.astro';
+---
+
+<BaseLayout
+  title="Ortenix — Bureau d'études FEA · Offshore · Naval · Nucléaire · Nantes"
+  description="Calcul de structures, simulation numérique et IA appliquée pour les secteurs critiques. Offshore, naval, énergie, nucléaire. DNV-GL, RCC-M, API 579. Nantes, France. Devis sous 48h."
+  lang="fr"
+>
+  <Hero lang="fr" />
+  <NormsBar />
+  <KeyFigures lang="fr" />
+  <WhyOrtenix lang="fr" />
+  <Sectors lang="fr" />
+  <Expertise lang="fr" />
+  <CaseStudiesPreview lang="fr" />
+  <AISection lang="fr" />
+  <References lang="fr" />
+  <Team lang="fr" />
+
+  <!-- CTA Final -->
+  <section class="py-20" style="background: var(--color-accent-cyan);">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="font-display font-extrabold text-[#0A1628] mb-4" style="font-size: clamp(1.8rem, 4vw, 3rem);">
+        Votre projet mérite une ingénierie sans compromis.
+      </h2>
+      <p class="text-[#0A1628] opacity-75 mb-8 text-lg max-w-xl mx-auto">
+        Dites-nous votre problème. Nous répondons avec une approche technique en 48h.
+      </p>
+      <a
+        href="#contact"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-[#0A1628] text-[var(--color-accent-cyan)] font-semibold rounded-lg hover:bg-[#0D1F35] transition-colors text-base"
+      >
+        Démarrer la conversation →
+      </a>
+    </div>
+  </section>
+
+  <Contact lang="fr" />
+</BaseLayout>

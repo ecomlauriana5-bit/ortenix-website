@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Contact from '../../components/sections/Contact.astro';
+
+const color = '#E8734A';
+const norms = [
+  { code: 'CODAP', desc: 'Code de conception et de calcul des appareils à pression non soumis à la flamme' },
+  { code: 'CODETI', desc: 'Code de conception et de calcul des tuyauteries industrielles' },
+  { code: 'EN 13480', desc: 'Tuyauteries industrielles métalliques — conception et calcul' },
+  { code: 'API 579', desc: 'Fitness-for-Service — intégrité des équipements en service' },
+  { code: 'ASME VIII', desc: 'Unfired pressure vessels — conception et qualification' },
+  { code: 'ASME B31.3', desc: 'Process piping — tuyauteries de process industriel' },
+];
+
+const expertises = [
+  { icon: '🔧', title: 'Calcul d\'équipements sous pression', desc: 'Conception et vérification de réservoirs, échangeurs, colonnes et cuves selon CODAP et ASME VIII. Prise en compte des chargements thermiques, sismiques et de pression.' },
+  { icon: '🌡️', title: 'Tuyauteries haute température', desc: 'Analyse de flexibilité et de contraintes sur réseaux de tuyauteries haute pression / haute température. Vérification CODETI, EN 13480 et ASME B31.3.' },
+  { icon: '📊', title: 'Fitness-for-Service (API 579)', desc: 'Évaluation de l\'intégrité des équipements en service présentant des défauts, corrosion ou déformation. Prolongation de durée de vie justifiée.' },
+  { icon: '📐', title: 'Analyse sismique', desc: 'Qualification sismique des équipements et tuyauteries selon Eurocodes et réglementations locales. Étude modale et réponse spectrale.' },
+];
+---
+
+<BaseLayout
+  title="Pétrochimie & Industrie — Calcul tuyauteries et équipements sous pression | Ortenix"
+  description="Bureau d'études calcul pétrochimie : tuyauteries haute pression, équipements sous pression, API 579, CODAP, CODETI. Nantes, France. Devis sous 48h."
+  lang="fr"
+>
+
+  <!-- Hero secteur -->
+  <section class="relative py-24 overflow-hidden" style={`background: linear-gradient(135deg, #0A1628 0%, color-mix(in srgb, ${color} 4%, #0A1628) 100%);`}>
+    <div class="absolute inset-0 pointer-events-none" style={`background: radial-gradient(ellipse 50% 60% at 80% 40%, color-mix(in srgb, ${color} 8%, transparent) 0%, transparent 70%);`}></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="h-px w-12" style={`background: ${color};`}></span>
+        <a href="/" class="font-mono text-xs uppercase tracking-widest hover:underline" style={`color: ${color};`}>← Accueil</a>
+      </div>
+      <div class="flex items-center gap-4 mb-6">
+        <span class="text-4xl">🏭</span>
+        <span class="font-mono text-sm uppercase tracking-widest" style={`color: ${color};`}>Pétrochimie & Industrie</span>
+      </div>
+      <h1 class="font-display font-extrabold text-white mb-5" style="font-size: clamp(2.5rem, 5vw, 5rem); max-width: 750px;">
+        Vos tuyauteries et équipements sous pression — <span style={`color: ${color};`}>calculés avant d'être construits.</span>
+      </h1>
+      <p class="text-[#8BA3BC] max-w-xl text-lg leading-relaxed">
+        Vos tuyauteries haute pression subissent des températures extrêmes. La flexibilité et la tenue sismique se calculent avant de se construire.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-8">
+        {['CODAP', 'CODETI', 'EN 13480', 'API 579', 'ASME VIII'].map(n => (
+          <span class="font-mono text-xs px-3 py-1.5 rounded border" style={`color: ${color}; border-color: color-mix(in srgb, ${color} 30%, transparent); background: color-mix(in srgb, ${color} 08%, transparent);`}>{n}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Codes normatifs -->
+  <section class="section-padding bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-4 fade-up">
+        <span class="h-px w-12" style={`background: ${color};`}></span>
+        <span class="font-mono text-xs uppercase tracking-widest" style={`color: ${color};`}>Codes normatifs</span>
+      </div>
+      <h2 class="font-display font-bold text-white mb-10 fade-up">Les codes qui gouvernent votre secteur</h2>
+      <div class="stagger-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {norms.map(n => (
+          <div class="stagger-item bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-5">
+            <span class="font-mono font-bold text-sm block mb-2" style={`color: ${color};`}>{n.code}</span>
+            <p class="text-xs text-[#8BA3BC] leading-relaxed">{n.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertises -->
+  <section class="section-padding bg-[var(--color-bg-primary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-4 fade-up">
+        <span class="h-px w-12" style={`background: ${color};`}></span>
+        <span class="font-mono text-xs uppercase tracking-widest" style={`color: ${color};`}>Nos expertises pour ce secteur</span>
+      </div>
+      <h2 class="font-display font-bold text-white mb-10 fade-up">Ce que nous faisons concrètement</h2>
+      <div class="stagger-container grid grid-cols-1 md:grid-cols-2 gap-6">
+        {expertises.map(e => (
+          <div class="stagger-item bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-7 hover:-translate-y-0.5 transition-transform">
+            <span class="text-3xl block mb-4">{e.icon}</span>
+            <h3 class="font-display font-semibold text-white mb-2">{e.title}</h3>
+            <p class="text-sm text-[#8BA3BC] leading-relaxed">{e.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Logiciels -->
+  <section class="py-16 bg-[var(--color-bg-secondary)] border-t border-[var(--color-bg-border)]">
+    <div class="max-w-7xl mx-auto px-6 fade-up">
+      <p class="font-mono text-xs text-[#8BA3BC] uppercase tracking-widest mb-6">Logiciels utilisés</p>
+      <div class="flex flex-wrap gap-3">
+        {['CAESAR II', 'AutoPIPE', 'ISOGEN', 'ANSYS Mechanical', 'Abaqus/Standard', 'PIPESIM', 'SolidWorks', 'CATIA V5'].map(t => (
+          <span class="font-mono text-sm px-4 py-2 rounded-lg bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] text-[#8BA3BC] hover:border-current hover:text-current transition-colors" style={`--hover-color: ${color};`}>{t}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cas client -->
+  <section class="section-padding bg-[var(--color-bg-primary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-4 fade-up">
+        <span class="h-px w-12" style={`background: ${color};`}></span>
+        <span class="font-mono text-xs uppercase tracking-widest" style={`color: ${color};`}>Cas client</span>
+      </div>
+      <div class="bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-2xl overflow-hidden fade-up" style={`border-top: 3px solid ${color};`}>
+        <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[var(--color-bg-border)]">
+          <div class="p-7">
+            <p class="font-mono text-xs text-[#8BA3BC] uppercase tracking-wide mb-3">Problème</p>
+            <p class="text-sm text-[#8BA3BC] leading-relaxed">Échangeur de chaleur haute pression à plaques soumis à des cycles thermiques sévères. Qualification PED requise pour mise en service.</p>
+          </div>
+          <div class="p-7">
+            <p class="font-mono text-xs text-[#8BA3BC] uppercase tracking-wide mb-3">Approche</p>
+            <p class="text-sm text-[#8BA3BC] leading-relaxed">Simulation thermo-mécanique ANSYS des profils de température en régime transitoire, vérification EN 13445-3 en fatigue thermique, dossier PED complet.</p>
+          </div>
+          <div class="p-7">
+            <p class="font-mono text-xs uppercase tracking-wide mb-3" style={`color: ${color};`}>Résultat</p>
+            <p class="text-sm text-[#8BA3BC] leading-relaxed">Conception validée du premier coup. Certification PED obtenue. Durée de vie garantie 25 ans en conditions nominales.</p>
+          </div>
+        </div>
+        <div class="px-7 py-4 border-t border-[var(--color-bg-border)] bg-[var(--color-bg-secondary)] flex flex-wrap gap-2 items-center">
+          <span class="font-mono text-xs text-[#8BA3BC]">Normes :</span>
+          {['EN 13445', 'PED 2014/68/UE', 'CODAP'].map(n => (
+            <span class="font-mono text-xs px-2 py-0.5 rounded border border-[var(--color-bg-border)] text-[#8BA3BC]">{n}</span>
+          ))}
+          <span class="ml-auto font-mono text-xs text-[#8BA3BC]">12 semaines</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Contact lang="fr" />
+</BaseLayout>

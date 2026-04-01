@@ -1,0 +1,153 @@
+---
+interface Props {
+  lang?: string;
+}
+const { lang = 'fr' } = Astro.props;
+const isFr = lang === 'fr';
+
+const forfaitFeatures = isFr ? [
+  'Périmètre défini et budget fixe',
+  'Livrables contractuels précis',
+  'Idéal pour les études ponctuelles',
+  'Devis sous 48h',
+  'NDA systématique',
+  'Rapport final détaillé',
+] : [
+  'Defined scope and fixed budget',
+  'Precise contractual deliverables',
+  'Ideal for one-time studies',
+  '48h quote',
+  'Systematic NDA',
+  'Detailed final report',
+];
+
+const atFeatures = isFr ? [
+  'Ingénieur senior dédié à votre équipe',
+  'Facturation au temps passé',
+  'Flexibilité maximale sur les sujets',
+  'Montée en compétences partagée',
+  'Intégration complète dans vos outils',
+  'NDA systématique',
+] : [
+  'Senior engineer dedicated to your team',
+  'Time-and-materials billing',
+  'Maximum flexibility on topics',
+  'Shared skill development',
+  'Full integration in your tools',
+  'Systematic NDA',
+];
+---
+
+<section class="section-padding bg-[var(--color-bg-primary)]" id="offre">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="mb-16 fade-up">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-px w-16 bg-[var(--color-accent-cyan)]"></span>
+        <span class="font-mono text-xs text-[var(--color-accent-cyan)] uppercase tracking-widest">
+          {isFr ? 'Notre offre' : 'Our offer'}
+        </span>
+      </div>
+      <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+        {isFr ? 'Deux modes' : 'Two modes'}<br/>
+        <span class="text-gradient-cyan">{isFr ? 'd\'intervention' : 'of engagement'}</span>
+      </h2>
+      <p class="mt-4 text-[var(--color-text-secondary)] max-w-xl">
+        {isFr
+          ? 'Que vous ayez une étude précise à réaliser ou besoin de renforcer vos équipes sur le long terme, nous nous adaptons.'
+          : 'Whether you have a specific study to conduct or need to strengthen your teams long-term, we adapt.'}
+      </p>
+    </div>
+
+    <!-- Comparison grid -->
+    <div class="stagger-container grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+      <!-- Forfait -->
+      <div class="stagger-item group relative bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-2xl p-8 hover:border-[var(--color-accent-cyan)] transition-all duration-300">
+        <div class="absolute top-0 left-6 right-6 h-[2px] bg-[var(--color-accent-cyan)] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+        <div class="mb-6">
+          <span class="inline-block font-mono text-xs px-3 py-1 rounded-full bg-[rgba(0,194,255,0.1)] text-[var(--color-accent-cyan)] border border-[rgba(0,194,255,0.2)] mb-4">
+            {isFr ? 'Étude au forfait' : 'Fixed-price study'}
+          </span>
+          <h3 class="font-display font-bold text-2xl text-[var(--color-text-primary)] mb-2">
+            {isFr ? 'Clé en main' : 'Turnkey'}
+          </h3>
+          <p class="text-[var(--color-text-secondary)] text-sm">
+            {isFr
+              ? 'Une étude complète avec périmètre défini, livrables précis et budget maîtrisé.'
+              : 'A complete study with defined scope, precise deliverables and controlled budget.'}
+          </p>
+        </div>
+
+        <ul class="space-y-3 mb-8">
+          {forfaitFeatures.map(feature => (
+            <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
+              <svg class="w-4 h-4 text-[var(--color-accent-cyan)] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        <a href="#contact" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-[var(--color-accent-cyan)] text-[var(--color-bg-primary)] font-semibold rounded-lg hover:bg-white transition-colors">
+          {isFr ? 'Demander un devis' : 'Request a quote'}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Assistance Technique -->
+      <div class="stagger-item group relative bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-2xl p-8 hover:border-[var(--color-accent-gold)] transition-all duration-300">
+        <div class="absolute top-0 left-6 right-6 h-[2px] bg-[var(--color-accent-gold)] rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+        <div class="mb-6">
+          <span class="inline-block font-mono text-xs px-3 py-1 rounded-full bg-[rgba(200,168,75,0.1)] text-[var(--color-accent-gold)] border border-[rgba(200,168,75,0.2)] mb-4">
+            {isFr ? 'Assistance Technique (AT)' : 'Technical Assistance (AT)'}
+          </span>
+          <h3 class="font-display font-bold text-2xl text-[var(--color-text-primary)] mb-2">
+            {isFr ? 'Renfort d\'équipe' : 'Team reinforcement'}
+          </h3>
+          <p class="text-[var(--color-text-secondary)] text-sm">
+            {isFr
+              ? 'Un ingénieur senior intégré à vos équipes, sur la durée, pour vos projets complexes.'
+              : 'A senior engineer integrated into your teams, long-term, for your complex projects.'}
+          </p>
+        </div>
+
+        <ul class="space-y-3 mb-8">
+          {atFeatures.map(feature => (
+            <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
+              <svg class="w-4 h-4 text-[var(--color-accent-gold)] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        <a href="#contact" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 border border-[var(--color-accent-gold)] text-[var(--color-accent-gold)] font-semibold rounded-lg hover:bg-[var(--color-accent-gold)] hover:text-[var(--color-bg-primary)] transition-colors">
+          {isFr ? 'Discutons de vos besoins' : 'Let\'s discuss your needs'}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- NDA mention -->
+    <div class="mt-10 fade-up flex items-center justify-center gap-3 text-sm text-[var(--color-text-muted)]">
+      <svg class="w-4 h-4 text-[var(--color-accent-cyan)]" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+      </svg>
+      <span class="font-mono text-xs">
+        {isFr
+          ? 'NDA systématique sur demande — Confidentialité garantie sur tous nos engagements'
+          : 'Systematic NDA on request — Guaranteed confidentiality on all our engagements'}
+      </span>
+    </div>
+  </div>
+</section>

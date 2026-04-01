@@ -1,0 +1,41 @@
+---
+import SEO from '../components/seo/SEO.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  lang?: string;
+}
+
+const { title, description, image, lang = 'fr' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang} data-theme="dark">
+<head>
+  <SEO title={title} description={description} image={image} lang={lang} />
+</head>
+<body>
+  <Header lang={lang} />
+  <main>
+    <slot />
+  </main>
+  <Footer lang={lang} />
+
+  <script>
+    // Theme persistence (runs before paint to avoid flash)
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+
+    // GSAP scroll animations (lazy-loaded)
+    document.addEventListener('DOMContentLoaded', async () => {
+      const { initScrollAnimations } = await import('../utils/gsap-utils');
+      await initScrollAnimations();
+    });
+  </script>
+</body>
+</html>

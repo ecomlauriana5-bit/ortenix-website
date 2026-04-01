@@ -1,0 +1,67 @@
+---
+import SectorLayout from '../../layouts/SectorLayout.astro';
+---
+
+<SectorLayout
+  title="Naval — Ingénierie navale & résistance des structures | Ortenix"
+  description="Bureau d'études naval spécialisé en calcul de structures, architecture navale et conformité BV Marine, DNV, STANAG. Neuf et réparation navale."
+  lang="fr"
+  sectorName="Naval"
+  sectorBaseline="Architecture navale · Résistance des structures · Certification"
+  sectorColor="#4A90D9"
+  sectorIcon="🚢"
+>
+
+  <!-- Enjeux -->
+  <section class="section-padding bg-[var(--color-bg-primary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-12 fade-up">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-12" style="background:#4A90D9"></span>
+          <span class="font-mono text-xs uppercase tracking-widest" style="color:#4A90D9">Enjeux</span>
+        </div>
+        <h2 class="font-display font-bold text-[var(--color-text-primary)]">
+          L'ingénierie navale<br/><span style="background:linear-gradient(135deg,#4A90D9,#2D6DAF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">à la hauteur des mers</span>
+        </h2>
+      </div>
+
+      <div class="stagger-container grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { icon: '⚓', title: 'Résistance longitudinale', desc: 'Calcul des contraintes de flexion longitudinale, analyse de l\'état limite ultime et de la fatigue sur la structure de la coque.' },
+          { icon: '🌊', title: 'Tenue à la mer', desc: 'Stabilité statique et dynamique, analyse de stabilité après avarie, conformité SOLAS et règlements des sociétés de classification.' },
+          { icon: '🛠️', title: 'Navire militaire & STANAG', desc: 'Dimensionnement selon les normes OTAN (STANAG 4154, 7079), résistance au blast sous-marin, qualification pour les marines nationales.' },
+        ].map(e => (
+          <div class="stagger-item bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] rounded-xl p-6 hover:border-[#4A90D9] transition-colors">
+            <span class="text-3xl block mb-4">{e.icon}</span>
+            <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-2">{e.title}</h3>
+            <p class="text-sm text-[var(--color-text-secondary)] leading-relaxed">{e.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Normes & Logiciels -->
+  <section class="section-padding bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 fade-up">
+        <div>
+          <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-4">Référentiels</h3>
+          <div class="flex flex-wrap gap-2">
+            {['BV Marine NR467', 'DNV HSLC', 'STANAG 4154', 'STANAG 7079', 'SOLAS', 'ISO 12215'].map(n => (
+              <span class="font-mono text-xs px-3 py-1.5 rounded bg-[var(--color-bg-card)] border border-[var(--color-bg-border)]" style="color:#4A90D9">{n}</span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-[var(--color-text-primary)] mb-4">Logiciels</h3>
+          <div class="flex flex-wrap gap-2">
+            {['ANSYS Mechanical', 'MAESTRO', 'AVEVA Marine', 'Patran/Nastran', 'SolidWorks', 'HydroStar'].map(s => (
+              <span class="font-mono text-xs px-3 py-1.5 rounded bg-[var(--color-bg-card)] border border-[var(--color-bg-border)] text-[var(--color-text-muted)]">{s}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</SectorLayout>
